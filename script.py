@@ -83,7 +83,7 @@ class GUI:
     def startDownloadThread(self):
         def downloadJava():
             self._download(SOURCES["Java8"],
-                           f"{pathlib.Path.home()}/Downloads",
+                           f"{pathlib.Path.home()}/Downloads/java8",
                            "Java")
             self.java_downloaded = True
             return
