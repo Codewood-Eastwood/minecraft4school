@@ -4,8 +4,8 @@ try:
     import threading
     import requests
     import pathlib
-    import tarfile, zipfile, time
-    import json, uuid, os, hashlib
+    import tarfile, zipfile, time  # noqa: E401
+    import json, uuid, os, hashlib  # noqa: E401
 except ImportError:
     import os
     print("Installing Dependencies...")
@@ -120,10 +120,10 @@ class GUI:
         # Wait until both files are downloaded
         while not self.extracted_all:
             time.sleep(0.1)
-    
+
         self.log("Creating minecraft account.\n", "gold")
-        polymc_path = str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC")
-        uuid_str = hashlib.md5(f"OfflinePlayer:{self.username}".encode('utf-8')).hexdigest()
+        polymc_path = str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC")  # noqa: E501
+        uuid_str = hashlib.md5(f"OfflinePlayer:{self.username}".encode('utf-8')).hexdigest()  # noqa: E501
 
         account_entry = {
             "active": True,
@@ -147,7 +147,7 @@ class GUI:
                 "token": "offline"
             }
         }
-        
+
         # Build the final accounts structure
         accounts_json = {
             "accounts": [account_entry],
@@ -220,7 +220,7 @@ UseNativeOpenAL=false
 UserAgentOverride=
 WrapperCommand=
 """
-        
+
         account_file = os.path.join(polymc_path, 'accounts.json')
         with open(account_file, 'w') as f:
             json.dump(accounts_json, f, indent=4)
@@ -231,51 +231,50 @@ WrapperCommand=
 
         self.log("Installation complete!")
         self.installed = True
-        messagebox.showinfo("Success", f"Please wait while Minecraft launcher starts")
-        os.system(str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC" / "polymc.exe"))
+        messagebox.showinfo("Success", "Please wait while Minecraft launcher starts")  # noqa: E501
+        os.system(str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC" / "polymc.exe"))  # noqa: E501
         quit()
-        
 
     def extractAll(self):
         # Wait until both files are downloaded
         while not all([self.java_downloaded, self.polymc_downloaded]):
             time.sleep(0.1)
-    
+
         self.log("Installing apps...\n", "gold")
-    
+
         try:
             # Extract OpenJDK21.tar.gz
             jdk_path = pathlib.Path.home() / "Downloads" / "OpenJDK21.tar.gz"
             jdk_extract_path = pathlib.Path.home() / "Downloads" / "OpenJDK21"
-    
+
             self.log(f"Extracting Java to {jdk_extract_path}\n", "cyan")
             with tarfile.open(jdk_path, "r:gz") as tar:
                 tar.extractall(path=jdk_extract_path)
             self.log("Java extraction complete!\n", "green")
             self.stage += 1
             self.overall_progress.set(0.75)
-    
+
         except Exception as e:
             self.log(f"Java extraction failed: {e}\n", "red")
-    
+
         try:
             # Extract PolyMC.zip
             polymc_path = pathlib.Path.home() / "Downloads" / "PolyMC.zip"
             polymc_extract_path = pathlib.Path.home() / "Downloads" / "PolyMC"
-    
+
             self.log(f"Extracting PolyMC to {polymc_extract_path}\n", "cyan")
             with zipfile.ZipFile(polymc_path, 'r') as zip_ref:
                 zip_ref.extractall(polymc_extract_path)
             self.log("PolyMC extraction complete!\n", "green")
             self.stage += 1
             self.overall_progress.set(1)
-    
+
         except Exception as e:
             self.log(f"PolyMC extraction failed: {e}\n", "red")
-    
+
         self.log("All installations done!\n", "white")
         self.extracted_all = True
-    
+
     def updateProgressBar(self):
         self.log("Creating progress bar\n", color="cyan")
         while not all([self.java_downloaded, self.polymc_downloaded]):
@@ -296,7 +295,7 @@ WrapperCommand=
 
     def start_pressed(self):
         self.username = self.username_var.get()
-        messagebox.showinfo("Welcome", f"Starting with username: {self.username}")
+        messagebox.showinfo("Welcome", f"Starting with username: {self.username}")  # noqa: E501
         self.start_button.pack_forget()
         self.log_box.pack(pady=10, fill="both", expand=False)
         self.log(f"Welcome, {self.username}!\n", "white")
@@ -327,6 +326,7 @@ WrapperCommand=
     def start(self) -> None:
         self.app.mainloop()
 
+
 class PlayGUI:
     def __init__(self) -> None:
         print("Load assets")
@@ -353,19 +353,20 @@ class PlayGUI:
         self.reinstall_button.pack(pady=10)
 
     def play_game(self) -> None:
-        os.system(str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC" / "polymc.exe"))
+        os.system(str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC" / "polymc.exe"))  # noqa: E501
 
     def reinstall_game(self) -> None:
-        messagebox.showinfo("Info", "Manually delete files from Download folder")
+        messagebox.showinfo("Info", "Manually delete files from Download folder")  # noqa: E501
         quit()
 
     def start(self) -> None:
         self.app.mainloop()
 
+
 if __name__ == "__main__":
     polymc_path = pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC"
     playgui = None
-    
+
     if os.path.isdir(polymc_path):
         playgui = PlayGUI()
         playgui.start()
