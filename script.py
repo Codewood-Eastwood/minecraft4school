@@ -12,7 +12,8 @@ except ImportError:
     import customtkinter as ctk
 
 SOURCES: dict[str, str] = {
-    "Java8": "https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u452-b09/OpenJDK8U-jdk_x64_windows_hotspot_8u452b09.zip"  # noqa: E501
+    "Java8": "http://mc.fissionhost.org:15028/download-jdk8",  # noqa: E501
+    "PolyMC": "http://mc.fissionhost.org:15028/download-polymc"  # noqa: E501
 }
 
 
@@ -22,6 +23,10 @@ class GUI:
         ctk.set_default_color_theme("blue")
 
         self.java_downloaded: bool = False
+        self.polymc_downloaded: bool = False
+        self.percent: int = 0
+        self.overall_percent: int = 0
+        self.percent_lock = threading.Lock()
 
         self.app = ctk.CTk()
         self.app.title("Minecraft Downloader")
@@ -71,23 +76,58 @@ class GUI:
                         if chunk:
                             f.write(chunk)
                             downloaded += len(chunk)
-                            percent = (downloaded / total) * 100 if total \
-                                else 0
-                            self.log(f"Download progress: {percent:.1f}"
-                                     "%\n",
-                                     "cyan")
+                            with self.percent_lock:
+                                if total:
+                                    self.percent = (downloaded/total) * 100
+                                    self.overall_percent += self.percent
+
                 self.log(f"{name} download complete!\n", "green")
         except Exception as e:
             self.log(f"Download of {name} failed: {e}\n", "red")
 
     def startDownloadThread(self):
-        def downloadJava():
+        def downloadAll():
+            download_path = str(pathlib.Path.home() / "Downloads" / "OpenJDK8.tar.gz")  # noqa: E501
             self._download(SOURCES["Java8"],
-                           f"{pathlib.Path.home()}/Downloads/java8",
+                           download_path,
                            "Java")
             self.java_downloaded = True
-            return
-        threading.Thread(target=downloadJava, daemon=True).start()
+            download_path = str(pathlib.Path.home() / "Downloads" / "PolyMC.zip")  # noqa: E501
+            # self.download_progress.set(0)
+            self._download(SOURCES["PolyMC"],
+                           download_path,
+                           "PolyMC")
+            self.polymc_downloaded = True
+
+        threading.Thread(target=self.updateProgressBar, daemon=True).start()
+        threading.Thread(target=downloadAll, daemon=True).start()
+
+    def updateProgressBar(self):
+        self.log("Creating progress bar\n", color="cyan")
+        while not all([self.java_downloaded, self.polymc_downloaded]):
+            # Update download progress bar
+            if not hasattr(self, "download_progress"):
+                self.download_progress = ctk.CTkProgressBar(
+                    self.main_frame
+                )
+                self.download_progress.pack(pady=5)
+                self.download_progress.set(0)
+
+            with self.percent_lock:
+                percent = self.percent
+            self.download_progress.set(percent / 100)
+
+            # Update overall progress bar
+            if not hasattr(self, "overall_progress"):
+                self.overall_progress = ctk.CTkProgressBar(
+                    self.main_frame
+                )
+                self.overall_progress.pack(pady=5)
+                self.overall_progress.set(0)
+            self.overall_progress.set(self.overall_percent / 200)
+
+        self.download_progress.forget()
+        self.log("Released download bar\n", "pink")
 
     def start_pressed(self):
         username = self.username_var.get()
