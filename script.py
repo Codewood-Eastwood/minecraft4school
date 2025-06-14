@@ -4,7 +4,7 @@ try:
     import threading
     import requests
     import pathlib
-    import tarfile, zipfile, time  # noqa: E401
+    import zipfile, time  # noqa: E401
     import json, uuid, os, hashlib  # noqa: E401
 except ImportError:
     import os
@@ -14,7 +14,7 @@ except ImportError:
     import customtkinter as ctk
 
 SOURCES: dict[str, str] = {
-    "Java21": "http://mc.fissionhost.org:15028/download-jdk21",  # noqa: E501
+    "Java17": "http://mc.fissionhost.org:15028/download-jdk17",  # noqa: E501
     "PolyMC": "http://mc.fissionhost.org:15028/download-polymc"  # noqa: E501
 }
 
@@ -33,6 +33,11 @@ class GUI:
         self.percent_lock = threading.Lock()
 
         self.app = ctk.CTk()
+        self.stop_download = True
+        self.app.protocol(
+            "WM_DELETE_WINDOW",
+            self.closing_window
+        )
         self.app.title("Minecraft Downloader")
         self.app.geometry("800x420")
 
@@ -74,6 +79,9 @@ class GUI:
         self.overall_progress.pack(pady=5)
         self.overall_progress.set(0)
 
+    def closing_window(self):
+        self.stop_download = True
+
     def _download(self, url: str, filename: str, name: str):
         self.log(f"Starting download of: {name}\n", "gold")
         self.stage += 1
@@ -85,20 +93,23 @@ class GUI:
                 with open(filename, 'wb') as f:
                     for chunk in r.iter_content(chunk_size=8192):
                         if chunk:
-                            f.write(chunk)
-                            downloaded += len(chunk)
-                            with self.percent_lock:
-                                if total:
-                                    self.percent = (downloaded/total) * 100
+                            # Check if window is trying to close
+                            if self.stop_download:
+                                return self.log(f"Download of {name} cancelled (window closed).\n", "red")  # noqa: E501
+                        f.write(chunk)
+                        downloaded += len(chunk)
+                        with self.percent_lock:
+                            if total:
+                                self.percent = (downloaded/total) * 100
 
-                self.log(f"{name} download complete!\n", "green")
+            self.log(f"{name} download complete!\n", "green")
         except Exception as e:
             self.log(f"Download of {name} failed: {e}\n", "red")
 
     def startDownloadThread(self):
         def downloadAll():
-            download_path = str(pathlib.Path.home() / "Downloads" / "OpenJDK21.tar.gz")  # noqa: E501
-            self._download(SOURCES["Java21"],
+            download_path = str(pathlib.Path.home() / "Downloads" / "OpenJDK17.zip")  # noqa: E501
+            self._download(SOURCES["Java17"],
                            download_path,
                            "Java")
             self.java_downloaded = True
@@ -176,7 +187,7 @@ InstSortMode=Name
 InstanceDir=instances
 JProfilerPath=
 JVisualVMPath=
-JavaPath={pathlib.Path.home()}/Downloads/OpenJDK21/jdk21u452-b09/bin/javaw.exe
+JavaPath={pathlib.Path.home()}/Downloads/OpenJDK17/jdk-17.0.15+6/bin/javaw.exe
 JsonEditor=
 JvmArgs=
 Language=en_GB
@@ -243,13 +254,13 @@ WrapperCommand=
         self.log("Installing apps...\n", "gold")
 
         try:
-            # Extract OpenJDK21.tar.gz
-            jdk_path = pathlib.Path.home() / "Downloads" / "OpenJDK21.tar.gz"
-            jdk_extract_path = pathlib.Path.home() / "Downloads" / "OpenJDK21"
+            # Extract OpenJDK17.tar.gz
+            jdk_path = pathlib.Path.home() / "Downloads" / "OpenJDK17.zip"
+            jdk_extract_path = pathlib.Path.home() / "Downloads" / "OpenJDK17"
 
             self.log(f"Extracting Java to {jdk_extract_path}\n", "cyan")
-            with tarfile.open(jdk_path, "r:gz") as tar:
-                tar.extractall(path=jdk_extract_path)
+            with zipfile.ZipFile(jdk_path, "r") as zip_ref:
+                zip_ref.extractall(path=jdk_extract_path)
             self.log("Java extraction complete!\n", "green")
             self.stage += 1
             self.overall_progress.set(0.75)
@@ -371,6 +382,6 @@ if __name__ == "__main__":
         playgui = PlayGUI()
         playgui.start()
 
-    if playgui and playgui.expected_quit:
+    if (playgui and playgui.expected_quit) or (not playgui):
         gui = GUI()
         gui.start()
