@@ -25,6 +25,7 @@ class GUI:
         self.java_downloaded: bool = False
         self.polymc_downloaded: bool = False
         self.percent: int = 0
+        self.stage: int = 0
         self.overall_percent: int = 0
         self.percent_lock = threading.Lock()
 
@@ -66,6 +67,7 @@ class GUI:
 
     def _download(self, url: str, filename: str, name: str):
         self.log(f"Starting download of: {name}\n", "gold")
+        self.stage += 1
         try:
             with requests.get(url, stream=True) as r:
                 r.raise_for_status()
@@ -79,7 +81,7 @@ class GUI:
                             with self.percent_lock:
                                 if total:
                                     self.percent = (downloaded/total) * 100
-                                    self.overall_percent += self.percent
+                                    self.overall_percent = (1*self.stage) + self.percent  # noqa: E501
 
                 self.log(f"{name} download complete!\n", "green")
         except Exception as e:
