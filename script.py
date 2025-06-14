@@ -33,7 +33,7 @@ class GUI:
         self.percent_lock = threading.Lock()
 
         self.app = ctk.CTk()
-        self.stop_download = True
+        self.stop_download = False
         self.app.protocol(
             "WM_DELETE_WINDOW",
             self.closing_window
@@ -81,6 +81,7 @@ class GUI:
 
     def closing_window(self):
         self.stop_download = True
+        quit()
 
     def _download(self, url: str, filename: str, name: str):
         self.log(f"Starting download of: {name}\n", "gold")
@@ -96,6 +97,7 @@ class GUI:
                             # Check if window is trying to close
                             if self.stop_download:
                                 return self.log(f"Download of {name} cancelled (window closed).\n", "red")  # noqa: E501
+
                         f.write(chunk)
                         downloaded += len(chunk)
                         with self.percent_lock:
