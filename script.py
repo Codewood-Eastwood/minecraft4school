@@ -132,7 +132,7 @@ class GUI:
     def configureAll(self):
         # Wait until both files are downloaded
         while not self.extracted_all:
-            time.sleep(0.1)
+            time.sleep(1)
 
         self.log("Creating minecraft account.\n", "gold")
         polymc_path = str(pathlib.Path.home() / "Downloads" / "PolyMC" / "PolyMC")  # noqa: E501
@@ -251,7 +251,7 @@ WrapperCommand=
     def extractAll(self):
         # Wait until both files are downloaded
         while not all([self.java_downloaded, self.polymc_downloaded]):
-            time.sleep(0.1)
+            time.sleep(1)
 
         self.log("Installing apps...\n", "gold")
 
@@ -291,6 +291,7 @@ WrapperCommand=
     def updateProgressBar(self):
         self.log("Creating progress bar\n", color="cyan")
         while not all([self.java_downloaded, self.polymc_downloaded]):
+            time.sleep(1)
             # Update download progress bar
             if not hasattr(self, "download_progress"):
                 self.download_progress = ctk.CTkProgressBar(
