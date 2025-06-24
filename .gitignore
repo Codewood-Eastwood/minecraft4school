@@ -1,1 +1,3 @@
-java8.zip
+build
+dist
+*.spec

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help - Simple Games</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #181a1b;
+      margin: 0;
+      padding: 2rem;
+      color: #ecf0f1;
+    }
+
+    h1 {
+      font-size: 2rem;
+      border-bottom: 2px solid #bbb;
+      padding-bottom: 0.3rem;
+      margin-top: 3rem;
+      color: #e1e8ed;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      background: #23272a;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.8rem 1rem;
+    }
+
+    thead {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #22272b;
+    }
+
+    tbody tr:hover {
+      background-color: #2a3b4d;
+    }
+
+    td {
+      font-family: monospace;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 1rem;
+      }
+
+      td {
+        padding: 0.5rem;
+        border: none;
+        border-bottom: 1px solid #333;
+        position: relative;
+      }
+
+      td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.3rem;
+        color: #bbb;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Games</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>Destination</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Source">Minecraft</td>
+        <td data-label="Destination"><a href="/minecraft" style="color: #4fc3f7; text-decoration: underline;">/minecraft/run_minecraft_exe.ps</a></td>
+      </tr>
+      <tr>
+        <td data-label="Source">Deltarune</td>
+        <td data-label="Destination"><a href="/deltarune" style="color: #4fc3f7; text-decoration: underline;">/deltarune/run_deltarune_exe.ps</a></td>
+      </tr>
+      <tr>
+        <td data-label="Source">Madness Melee</td>
+        <td data-label="Destination"><a href="/madness-melee" style="color: #4fc3f7; text-decoration: underline;">/madness-melee/run_madness_melee_exe.ps</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Advanced</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>Destination</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Source">./</td>
+        <td data-label="Destination">/minecraft/run_minecraft_exe.ps</td>
+      </tr>
+      <tr>
+        <td data-label="Source">./minecraft-py</td>
+        <td data-label="Destination">/minecraft/script.py</td>
+      </tr>
+      <tr>
+        <td data-label="Source">./minecraft-exe</td>
+        <td data-label="Destination">/minecraft/script.mp3</td>
+      </tr>
+      <tr>
+        <td data-label="Source">./deltarune</td>
+        <td data-label="Destination">/deltarune/run_deltarune_exe.ps</td>
+      </tr>
+      <tr>
+        <td data-label="Source">./deltarune_zip</td>
+        <td data-label="Destination">/deltarune/deltarunedemo.zip</td>
+      </tr>
+      <tr>
+        <td data-label="Source">./download-polymc</td>
+        <td data-label="Destination">/minecraft/PolyMC.zip</td>
+      </tr>
+      <tr>
+        <td data-label="Source">./download-jdk17</td>
+        <td data-label="Destination">/minecraft/OpenJDK17.zip</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

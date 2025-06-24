@@ -81,7 +81,7 @@ class GUI:
 
     def closing_window(self):
         self.stop_download = True
-        quit()
+        exit()
 
     def _download(self, url: str, filename: str, name: str):
         self.log(f"Starting download of: {name}\n", "gold")

