@@ -112,6 +112,20 @@ def madness_melee_zip():
     )
 
 
+@app.route('/ddlc')
+def ddlc():
+    return script_response("ddlc/run_ddlc_exe.ps")
+
+@app.route('/ddlc-zip')
+def ddlc_zip():
+    return send_file(
+        'ddlc/DDLC.zip',
+        as_attachment=True,
+        download_name='DDLC.zip',
+        mimetype='application/zip'
+    )
+
+
 @app.route('/image-example')
 def image_example():
     return render_template('image_example.html')

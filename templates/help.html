@@ -4,154 +4,158 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Help - Simple Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #181a1b;
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #232b36 0%, #1a202c 100%);
       margin: 0;
-      padding: 2rem;
-      color: #ecf0f1;
+      padding: 2rem 0 0 0;
+      color: #e2e8f0;
+      min-height: 100vh;
     }
-
+    .container {
+      max-width: 900px;
+      margin: 40px auto 32px auto;
+      background: #232b36;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.32);
+      padding: 40px 32px 48px 32px;
+    }
     h1 {
-      font-size: 2rem;
-      border-bottom: 2px solid #bbb;
+      font-size: 2.2rem;
+      border-bottom: 2px solid #4fc3f7;
       padding-bottom: 0.3rem;
       margin-top: 3rem;
-      color: #e1e8ed;
+      color: #80ccff;
+      letter-spacing: 1px;
+      text-align: center;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      background: #23272a;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.18);
+      background: #232b36;
+      border-radius: 10px;
+      overflow: hidden;
     }
-
     th, td {
       text-align: left;
       padding: 0.8rem 1rem;
     }
-
     thead {
       background-color: #2c3e50;
       color: #ecf0f1;
     }
-
     tbody tr:nth-child(odd) {
       background-color: #22272b;
     }
-
     tbody tr:hover {
       background-color: #2a3b4d;
     }
-
     td {
       font-family: monospace;
     }
-
+    a {
+      color: #4fc3f7;
+      text-decoration: underline;
+      border-bottom: 1px dashed #4fc3f7;
+      transition: color 0.2s, border-bottom 0.2s;
+    }
+    a:hover {
+      color: #fff;
+      border-bottom: 1px solid #fff;
+    }
     @media (max-width: 600px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
-      tr {
-        margin-bottom: 1rem;
-      }
-
-      td {
-        padding: 0.5rem;
-        border: none;
-        border-bottom: 1px solid #333;
-        position: relative;
-      }
-
-      td:before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: block;
-        margin-bottom: 0.3rem;
-        color: #bbb;
-      }
+      .container { padding: 16px 4px; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 1rem; }
+      td { padding: 0.5rem; border: none; border-bottom: 1px solid #333; position: relative; }
+      td:before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 0.3rem; color: #bbb; }
     }
   </style>
 </head>
 <body>
-
-  <h1>Games</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Source</th>
-        <th>Destination</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Source">Minecraft</td>
-        <td data-label="Destination"><a href="/minecraft" style="color: #4fc3f7; text-decoration: underline;">/minecraft/run_minecraft_exe.ps</a></td>
-      </tr>
-      <tr>
-        <td data-label="Source">Deltarune</td>
-        <td data-label="Destination"><a href="/deltarune" style="color: #4fc3f7; text-decoration: underline;">/deltarune/run_deltarune_exe.ps</a></td>
-      </tr>
-      <tr>
-        <td data-label="Source">Madness Melee</td>
-        <td data-label="Destination"><a href="/madness-melee" style="color: #4fc3f7; text-decoration: underline;">/madness-melee/run_madness_melee_exe.ps</a></td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="margin-top:2rem; text-align:center;">
-    Want to contribute or add games yourself? 
-    <a href="https://github.com/ANGADSINGHT/Minecraft4School" style="color: #4fc3f7; text-decoration: underline;">
-      Click here
-    </a>
-  </p>
-
-  <h1>Advanced</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Source</th>
-        <th>Destination</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Source">./</td>
-        <td data-label="Destination">/minecraft/run_minecraft_exe.ps</td>
-      </tr>
-      <tr>
-        <td data-label="Source">./minecraft-py</td>
-        <td data-label="Destination">/minecraft/script.py</td>
-      </tr>
-      <tr>
-        <td data-label="Source">./minecraft-exe</td>
-        <td data-label="Destination">/minecraft/script.mp3</td>
-      </tr>
-      <tr>
-        <td data-label="Source">./deltarune</td>
-        <td data-label="Destination">/deltarune/run_deltarune_exe.ps</td>
-      </tr>
-      <tr>
-        <td data-label="Source">./deltarune_zip</td>
-        <td data-label="Destination">/deltarune/deltarunedemo.zip</td>
-      </tr>
-      <tr>
-        <td data-label="Source">./download-polymc</td>
-        <td data-label="Destination">/minecraft/PolyMC.zip</td>
-      </tr>
-      <tr>
-        <td data-label="Source">./download-jdk17</td>
-        <td data-label="Destination">/minecraft/OpenJDK17.zip</td>
-      </tr>
-    </tbody>
-  </table>
-
+  <div class="container">
+    <h1>Games</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Description</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Source">Minecraft</td>
+          <td data-label="Description">Works on some pcs, doesn't on others</td>
+          <td data-label="Link"><a href="/minecraft">/minecraft/run_minecraft_exe.ps</a></td>
+        </tr>
+        <tr>
+          <td data-label="Source">Deltarune</td>
+          <td data-label="Description">A popular pixel story game</td>
+          <td data-label="Link"><a href="/deltarune">/deltarune/run_deltarune_exe.ps</a></td>
+        </tr>
+        <tr>
+          <td data-label="Source">Madness Melee</td>
+          <td data-label="Description">A violent close combat Street Fighter style game</td>
+          <td data-label="Link"><a href="/madness-melee">/madness-melee/run_madness_melee_exe.ps</a></td>
+        </tr>
+        <tr>
+          <td data-label="Source">Doki Doki Literature Club</td>
+          <td data-label="Description">Not my type of game but... for someone special</td>
+          <td data-label="Link"><a href="/ddlc">/ddlc/run_ddlc_exe.ps</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:2rem; text-align:center;">
+      Want to contribute or add games yourself? 
+      <a href="https://github.com/ANGADSINGHT/Minecraft4School">
+        Click here
+      </a>
+    </p>
+    <h1>Advanced</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Destination</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Source">./</td>
+          <td data-label="Destination">/minecraft/run_minecraft_exe.ps</td>
+        </tr>
+        <tr>
+          <td data-label="Source">./minecraft-py</td>
+          <td data-label="Destination">/minecraft/script.py</td>
+        </tr>
+        <tr>
+          <td data-label="Source">./minecraft-exe</td>
+          <td data-label="Destination">/minecraft/script.mp3</td>
+        </tr>
+        <tr>
+          <td data-label="Source">./deltarune</td>
+          <td data-label="Destination">/deltarune/run_deltarune_exe.ps</td>
+        </tr>
+        <tr>
+          <td data-label="Source">./deltarune_zip</td>
+          <td data-label="Destination">/deltarune/deltarunedemo.zip</td>
+        </tr>
+        <tr>
+          <td data-label="Source">./download-polymc</td>
+          <td data-label="Destination">/minecraft/PolyMC.zip</td>
+        </tr>
+        <tr>
+          <td data-label="Source">./download-jdk17</td>
+          <td data-label="Destination">/minecraft/OpenJDK17.zip</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
