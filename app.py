@@ -67,8 +67,8 @@ def download_polymc():
     return send_file(
         'minecraft/PolyMC.zip',
         as_attachment=True,
-        download_name='PolyMC.zip',
-        mimetype='application/zip'
+        download_name='PolyMC.mp3',
+        mimetype='application/mp3'
     )
 
 
@@ -77,8 +77,8 @@ def download_openjdk8():
     return send_file(
         'minecraft/OpenJDK17.zip',
         as_attachment=True,
-        download_name='OpenJDK17.zip',
-        mimetype='application/zip'
+        download_name='OpenJDK17.mp3',
+        mimetype='application/mp3'
     )
 
 
