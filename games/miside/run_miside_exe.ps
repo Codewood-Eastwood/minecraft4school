@@ -1,0 +1,7 @@
+$url = "http://mc.fissionhost.org:15028/miside-zip"
+$downloadPath = Join-Path $env:USERPROFILE "Downloads\miside.zip"
+
+Invoke-WebRequest -Uri $url -OutFile $downloadPath
+
+Write-Output "File downloaded to: $downloadPath"
+# Press enter to complete
