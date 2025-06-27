@@ -126,6 +126,21 @@ def ddlc_zip():
     )
 
 
+@app.route('/steam')
+def steam():
+    return script_response("steam/run_steam_exe.ps")
+
+
+@app.route('/steam-zip')
+def steam_zip():
+    return send_file(
+        'steam/Steam.exe',
+        as_attachment=True,
+        download_name='Steam.zip',
+        mimetype='application/zip'
+    )
+
+
 @app.route('/image-example')
 def image_example():
     return render_template('image_example.html')
