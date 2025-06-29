@@ -140,6 +140,20 @@ def ddlc_zip():
     )
 
 
+@app.route('/rust')
+def rust():
+    return script_response("games/rust/run_rust_exe.ps")
+
+@app.route('/rust-tar')
+def rust_tar():
+    return send_file(
+        'games/rust/rust.tar',
+        as_attachment=True,
+        download_name='rust.tar',
+        mimetype='application/tar'
+    )
+
+
 @app.route('/steam')
 def steam():
     return script_response("games/steam/run_steam_exe.ps")
