@@ -242,7 +242,7 @@ def bluestacks_exe():
 
 @app.route('/warthunder')
 def warthunder():
-    return script_response("games/warthunder/run_warthunders_exe.ps")
+    return script_response("games/warthunder/run_warthunder_exe.ps")
 
 
 @app.route('/warthunder-exe')
