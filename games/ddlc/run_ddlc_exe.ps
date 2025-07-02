@@ -1,7 +1,63 @@
-$url = "http://mc.fissionhost.org:15028/ddlc-zip"
-$downloadPath = Join-Path $env:USERPROFILE "Downloads\ddlc.zip"
+$host.ui.RawUI.WindowTitle = "DDLC Downloader - Minecraft4School"
+Write-Host "===============================" -ForegroundColor Yellow
+Write-Host "   DDLC Game Downloader      " -ForegroundColor Cyan
+Write-Host "===============================" -ForegroundColor Yellow
+Write-Host "This script will download DDLC to your Downloads folder." -ForegroundColor Green
+Write-Host "Please wait..." -ForegroundColor Gray
 
-Invoke-WebRequest -Uri $url -OutFile $downloadPath
+function Download-FileWithProgress {
+    param(
+        [string]$url,
+        [string]$outputPath
+    )
+    $resume = $false
+    $headers = @{}
+    $existingLength = 0
+    if (Test-Path $outputPath) {
+        $existingLength = (Get-Item $outputPath).Length
+        $headers["Range"] = "bytes=$existingLength-"
+        $resume = $true
+    }
+    $req = [System.Net.HttpWebRequest]::Create($url)
+    $req.Method = "GET"
+    foreach ($key in $headers.Keys) { $req.Headers.Add($key, $headers[$key]) }
+    $resp = $req.GetResponse()
+    $totalLength = $resp.ContentLength + $existingLength
+    $stream = $resp.GetResponseStream()
+    $fileMode = [System.IO.FileMode]::Append
+    if (-not $resume) { $fileMode = [System.IO.FileMode]::Create }
+    $fs = New-Object System.IO.FileStream($outputPath, $fileMode, [System.IO.FileAccess]::Write)
+    $buffer = New-Object byte[] 8192
+    $read = 0
+    $totalRead = $existingLength
+    $sw = [System.Diagnostics.Stopwatch]::StartNew()
+    do {
+        $read = $stream.Read($buffer, 0, $buffer.Length)
+        if ($read -gt 0) {
+            $fs.Write($buffer, 0, $read)
+            $totalRead += $read
+            $percent = [math]::Round(($totalRead / $totalLength) * 100, 2)
+            $elapsed = $sw.Elapsed.TotalSeconds
+            if ($totalRead -gt 0 -and $elapsed -gt 0) {
+                $speed = $totalRead / $elapsed
+                $eta = ($totalLength - $totalRead) / $speed
+                Write-Host ("`rProgress: {0}% | ETA: {1:N1}s " -f $percent, $eta) -NoNewline -ForegroundColor Cyan
+            }
+        }
+    } while ($read -gt 0)
+    $fs.Close()
+    $stream.Close()
+    $resp.Close()
+    Write-Host ""  # Newline after progress
+}
 
-Write-Output "File downloaded to: $downloadPath"
-# Press enter to complete
+try {
+    $url = "http://mc.fissionhost.org:15028/ddlc-zip"
+    $downloadPath = Join-Path $env:USERPROFILE "Downloads\ddlc.zip"
+    Download-FileWithProgress -url $url -outputPath $downloadPath
+    Write-Host "\nSuccess! File downloaded to: $downloadPath" -ForegroundColor Green
+} catch {
+    Write-Host "\n[ERROR] Download failed: $_" -ForegroundColor Red
+}
+Write-Host "\nPress Enter to exit..." -ForegroundColor Yellow
+[void][System.Console]::ReadLine()
