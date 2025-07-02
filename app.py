@@ -1,13 +1,47 @@
 # Created by Angadpal Tak
-# version 1.22.3
+# version 1.23.1
 
 import uuid
 import threading
 import time
+import logging
 from flask import Flask, send_file, render_template, request, make_response
+import sys
 # flake8: noqa: E501
 
 app = Flask(__name__)
+
+# Configure logger
+class ColorFormatter(logging.Formatter):
+    COLORS = {
+        logging.DEBUG: "\033[94m",    # Blue
+        logging.INFO: "\033[92m",     # Green
+        logging.WARNING: "\033[93m",  # Yellow
+        logging.ERROR: "\033[91m",    # Red
+        logging.CRITICAL: "\033[95m", # Magenta
+    }
+    RESET = "\033[0m"
+
+    def format(self, record):
+        color = self.COLORS.get(record.levelno, self.RESET)
+        message = super().format(record)
+        return f"{color}{message}{self.RESET}"
+
+file_handler = logging.FileHandler('app.log', encoding='utf-8')
+file_handler.setFormatter(logging.Formatter(
+    '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'
+))
+
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setFormatter(ColorFormatter(
+    '[%(asctime)s] %(levelname)s in %(module)s: %(message)s'
+))
+
+logging.basicConfig(
+    level=logging.INFO,
+    handlers=[file_handler, stream_handler]
+)
+logger = logging.getLogger(__name__)
 
 logins: dict[str, str] = {}
 passwords: list[str] = ["caidon67", "grade3", "sixseven", "vedsucks123", "lovenatsuki", "130iq", "mnn3gkczLnH4", "ginger1"]
@@ -18,9 +52,11 @@ template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness-mel
 
 @app.before_request
 def require_client_id():
+    logger.info(f"Request to {request.endpoint} from {request.remote_addr}")
     if request.endpoint in template_returns:
         if not request.cookies.get('client_id'):
             if request.endpoint != "login":
+                logger.warning(f"Unauthorized access attempt to {request.endpoint} from {request.remote_addr}")
                 return render_template('login.html')
 
 def cleanup_logins():
@@ -28,29 +64,57 @@ def cleanup_logins():
         now = time.time()
         expired = [uid for uid, t in login_times.items() if now - t > 3600]
         for uid in expired:
+            logger.info(f"Session expired for client_id: {uid}")
             logins.pop(uid, None)
             login_times.pop(uid, None)
         time.sleep(60)
 
 threading.Thread(target=cleanup_logins, daemon=True).start()
 
+def add_eta_to_script(script_content, eta):
+    # Add ETA as a comment at the top of the script
+    lines = script_content.splitlines()
+    if lines and lines[0].startswith('# ETA:'):
+        lines[0] = f'# ETA: {eta}'
+    else:
+        lines = [f'# ETA: {eta}'] + lines
+    return '\n'.join(lines)
+
+def get_eta_for_script(file):
+    eta_map = {
+        "games/minecraft/run_minecraft_exe.ps": "~2-3 minutes",
+        "games/deltarune/run_deltarune_exe.ps": "~1-2 minutes",
+        "games/miside/run_miside_exe.ps": "~1 minute",
+        "games/madness-melee/run_madness_melee_exe.ps": "~1-2 minutes",
+        "games/ddlc/run_ddlc_exe.ps": "~1 minute",
+        "games/rust/run_rust_exe.ps": "~3-5 minutes",
+        "games/steam/run_steam_exe.ps": "~2-4 minutes",
+        "games/bluestacks/run_bluestacks_exe.ps": "~2-3 minutes",
+        "games/warthunder/run_warthunders_exe.ps": "~2-4 minutes",
+    }
+    return eta_map.get(file, "~1-3 minutes")
+
 def script_response(file):
     try:
         with open(file, "r") as f:
             script_content = f.read()
+        eta = get_eta_for_script(file)
+        script_content = add_eta_to_script(script_content, eta)
+        logger.info(f"Served script: {file} (ETA: {eta})")
         return render_template(
             'script_response.html',
             script_content=script_content,
             filename=file,
-            instructions="""
-1. Open <a href="/image-help" target="_blank">Windows Powershell</a><br>
+            instructions=f"""
+1. Open <a href=\"/image-help\" target=\"_blank\">Windows Powershell</a><br>
 2. Paste the above code in when loaded<br>
 3. Press enter, if it isn't lagging then something will happen<br>
-4. For image help, click <a href="/image-help" target="_blank">here</a>
+4. For image help, click <a href=\"/image-help\" target=\"_blank\">here</a>
 """
         )
 
     except Exception as e:  # noqa: E722
+        logger.error(f"Error serving script {file}: {e}")
         print("**** ERROR ****")
         return render_template(
             'script_response.html',
@@ -68,20 +132,20 @@ def root():
 def login():
     if request.method == 'POST':
         password = request.form.get('password')
-
+        logger.info(f"Login attempt with password: {password} from {request.remote_addr}")
         if password not in passwords:
+            logger.warning(f"Failed login attempt with password: {password} from {request.remote_addr}")
             return render_template('login_failure.html')
-        
         if password in logins.values():
+            logger.warning(f"Duplicate login attempt with password: {password} from {request.remote_addr}")
             return render_template('login_failure.html')
-
         # Check for existing client ID cookie
         unique_id = request.cookies.get('client_id')
         if not unique_id:
             unique_id = str(uuid.uuid4())
-
         logins[unique_id] = password
         login_times[unique_id] = time.time()
+        logger.info(f"Login success for client_id: {unique_id} from {request.remote_addr}")
         resp = make_response(render_template('login_success.html'))
         resp.set_cookie('client_id', unique_id, max_age=3600)  # 1 year
         return resp

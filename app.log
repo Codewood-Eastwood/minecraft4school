@@ -1,0 +1,16 @@
+[2025-07-02 18:25:14,854] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:15028
+ * Running on http://192.168.1.149:15028
+[2025-07-02 18:25:14,854] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-07-02 18:25:14,856] INFO in _internal:  * Restarting with stat
+[2025-07-02 18:25:15,158] WARNING in _internal:  * Debugger is active!
+[2025-07-02 18:25:15,163] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-02 18:25:23,214] INFO in app: Request to root from 127.0.0.1
+[2025-07-02 18:25:23,246] INFO in _internal: 127.0.0.1 - - [02/Jul/2025 18:25:23] "GET / HTTP/1.1" 200 -
+[2025-07-02 18:25:23,315] INFO in app: Request to None from 127.0.0.1
+[2025-07-02 18:25:23,316] INFO in _internal: 127.0.0.1 - - [02/Jul/2025 18:25:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-07-02 18:25:50,319] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-02 18:25:50,348] INFO in _internal:  * Restarting with stat
+[2025-07-02 18:25:50,617] WARNING in _internal:  * Debugger is active!
+[2025-07-02 18:25:50,619] INFO in _internal:  * Debugger PIN: 783-216-381
