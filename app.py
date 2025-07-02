@@ -233,7 +233,7 @@ def bluestacks():
 @app.route('/bluestacks-exe')
 def bluestacks_exe():
     return send_file(
-        'games/bluestacks.exe',
+        'games/bluestacks/bluestacks.exe',
         as_attachment=True,
         download_name='bluestacks.mp3',
         mimetype='application/mp3'
@@ -248,7 +248,7 @@ def warthunder():
 @app.route('/warthunder-exe')
 def warthunder_exe():
     return send_file(
-        'games/warthunder.exe',
+        'games/warthunder/warthunder.exe',
         as_attachment=True,
         download_name='warthunder.mp3',
         mimetype='application/mp3'
