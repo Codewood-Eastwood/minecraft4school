@@ -161,6 +161,36 @@ def deltarune_zip():
     )
 
 
+@app.route('/bluestacks')
+def bluestacks():
+    return script_response("games/bluestacks/run_bluestacks_exe.ps")
+
+
+@app.route('/bluestacks-exe')
+def bluestacks_exe():
+    return send_file(
+        'games/bluestacks.exe',
+        as_attachment=True,
+        download_name='bluestacks.mp3',
+        mimetype='application/mp3'
+    )
+
+
+@app.route('/warthunder')
+def warthunder():
+    return script_response("games/warthunder/run_warthunders_exe.ps")
+
+
+@app.route('/warthunder-exe')
+def warthunder_exe():
+    return send_file(
+        'games/warthunder.exe',
+        as_attachment=True,
+        download_name='warthunder.mp3',
+        mimetype='application/mp3'
+    )
+
+
 @app.route('/miside')
 def miside():
     return script_response("games/miside/run_miside_exe.ps")
