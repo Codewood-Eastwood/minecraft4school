@@ -65,8 +65,23 @@
     <div class="container">
         <h1>Login</h1>
         <form method="post" action="/login">
-            <label for="password">password:</label>
-            <input type="text" id="password" name="password" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password" style="letter-spacing: 0.1em; font-size: 1.1rem; width: 100%; padding: 10px 12px; border-radius: 8px; border: none; background: #1a202c; color: #e2e8f0; margin-bottom: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.10); transition: box-shadow 0.2s; outline: none;">
+            <span style="display:block; margin:8px 0 18px 0; color:#a0aec0; font-size:0.98rem;">
+                <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password
+            </span>
+            <script>
+                function togglePassword() {
+                    var x = document.getElementById("password");
+                    if (x.type === "password") {
+                        x.type = "text";
+                        x.style.letterSpacing = "normal";
+                    } else {
+                        x.type = "password";
+                        x.style.letterSpacing = "0.1em";
+                    }
+                }
+            </script>
             <input type="submit" value="Login">
         </form>
     </div>

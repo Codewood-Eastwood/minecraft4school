@@ -1,3 +1,6 @@
+# Created by Angadpal Tak
+# version 1.22.3
+
 import uuid
 import threading
 import time
@@ -6,19 +9,19 @@ from flask import Flask, send_file, render_template, request, make_response
 
 app = Flask(__name__)
 
-
-# Enforce client_id cookie for all routes except login and root
-@app.before_request
-def require_client_id():
-    if not request.cookies.get('client_id'):
-        return render_template('login.html')
-
-
 logins: dict[str, str] = {}
 passwords: list[str] = ["caidon67", "grade3", "sixseven", "vedsucks123", "lovenatsuki", "130iq", "mnn3gkczLnH4", "ginger1"]
 premium_passwords: list[str] = ["caidon67", "mnn3gkczLnH4", "ginger1", "vedsucks123"]
 
 login_times: dict[str, float] = {}
+template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness-melee", "ddlc", "rust", "steam")
+
+@app.before_request
+def require_client_id():
+    if request.endpoint in template_returns:
+        if not request.cookies.get('client_id'):
+            if request.endpoint != "login":
+                return render_template('login.html')
 
 def cleanup_logins():
     while True:
@@ -58,7 +61,6 @@ def script_response(file):
 
 @app.route('/')
 def root():
-    
     return render_template('login.html')
 
 
@@ -243,4 +245,4 @@ def image_example():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=15028)
+    app.run(host="0.0.0.0", port=15028, debug=True)
