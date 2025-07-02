@@ -1,5 +1,5 @@
 # Created by Angadpal Tak
-# version 1.23.1
+# version 1.24.6
 
 import uuid
 import threading
@@ -54,10 +54,13 @@ template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness-mel
 def require_client_id():
     logger.info(f"Request to {request.endpoint} from {request.remote_addr}")
     if request.endpoint in template_returns:
-        if not request.cookies.get('client_id'):
+        unique_id = request.cookies.get('client_id')
+        if not unique_id:
             if request.endpoint != "login":
                 logger.warning(f"Unauthorized access attempt to {request.endpoint} from {request.remote_addr}")
                 return render_template('login.html')
+        if unique_id not in logins:
+            return render_template('expired.html')
 
 def cleanup_logins():
     while True:
@@ -147,7 +150,7 @@ def login():
         login_times[unique_id] = time.time()
         logger.info(f"Login success for client_id: {unique_id} from {request.remote_addr}")
         resp = make_response(render_template('login_success.html'))
-        resp.set_cookie('client_id', unique_id, max_age=3600)  # 1 year
+        resp.set_cookie('client_id', unique_id, max_age=3600)
         return resp
 
     return render_template('login.html')

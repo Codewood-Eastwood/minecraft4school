@@ -4,156 +4,304 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Help - Simple Games</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #232b36 0%, #1a202c 100%);
-      margin: 0;
-      padding: 2rem 0 0 0;
-      color: #e2e8f0;
       min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f5f7fa;
+      overflow-x: hidden;
+    }
+    .hero {
+      width: 100vw;
+      min-height: 340px;
+      background: linear-gradient(120deg, rgba(76,195,247,0.18) 0%, rgba(128,204,255,0.12) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 64px 16px 32px 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #4fc3f7;
+      margin: 0 0 16px 0;
+      text-shadow: 0 4px 32px #000a, 0 1px 0 #fff2;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #e2e8f0;
+      max-width: 600px;
+      text-align: center;
+      margin: 0 auto 0 auto;
+      line-height: 1.6;
+      text-shadow: 0 2px 12px #0005;
     }
     .container {
-      max-width: 900px;
-      margin: 40px auto 32px auto;
-      background: #232b36;
-      border-radius: 18px;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.32);
-      padding: 40px 32px 48px 32px;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 0 24px 48px 24px;
+      display: flex;
+      gap: 40px;
+      position: relative;
+      z-index: 2;
     }
-    h1 {
-      font-size: 2.2rem;
-      border-bottom: 2px solid #4fc3f7;
-      padding-bottom: 0.3rem;
-      margin-top: 3rem;
+    .main-content {
+      flex: 2 1 0%;
+      margin-top: -60px;
+    }
+    .glass-card {
+      background: rgba(35,43,54,0.82);
+      border-radius: 22px;
+      box-shadow: 0 8px 40px 0 rgba(0,0,0,0.28), 0 1.5px 0 #4fc3f7;
+      padding: 36px 32px 32px 32px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(76,195,247,0.13);
+      transition: box-shadow 0.2s;
+    }
+    .glass-card:hover {
+      box-shadow: 0 12px 60px 0 rgba(76,195,247,0.18), 0 1.5px 0 #4fc3f7;
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
       color: #80ccff;
+      margin-top: 0;
+      margin-bottom: 1.2rem;
       letter-spacing: 1px;
-      text-align: center;
+      text-shadow: 0 2px 12px #0005;
     }
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       margin-top: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.18);
-      background: #232b36;
-      border-radius: 10px;
+      background: rgba(44,62,80,0.92);
+      border-radius: 14px;
       overflow: hidden;
+      box-shadow: 0 2px 12px #0003;
     }
     th, td {
       text-align: left;
-      padding: 0.8rem 1rem;
+      padding: 1.1rem 1.2rem;
+      font-size: 1.05rem;
     }
     thead {
-      background-color: #2c3e50;
-      color: #ecf0f1;
+      background: linear-gradient(90deg, #4fc3f7 0%, #80ccff 100%);
+      color: #1a202c;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
     tbody tr:nth-child(odd) {
-      background-color: #22272b;
+      background-color: rgba(34,39,43,0.92);
     }
     tbody tr:hover {
-      background-color: #2a3b4d;
+      background: linear-gradient(90deg, #232b36 0%, #2c3e50 100%);
+      transition: background 0.2s;
     }
     td {
-      font-family: monospace;
+      font-family: 'Roboto Mono', monospace;
+      color: #e2e8f0;
     }
     a {
       color: #4fc3f7;
-      text-decoration: underline;
-      border-bottom: 1px dashed #4fc3f7;
+      text-decoration: none;
+      border-bottom: 1.5px dashed #4fc3f7;
       transition: color 0.2s, border-bottom 0.2s;
+      font-weight: 500;
     }
     a:hover {
       color: #fff;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1.5px solid #fff;
+    }
+    .contribute {
+      margin-top:2.5rem;
+      text-align:center;
+      font-size: 1.1rem;
+    }
+    .contribute a {
+      background: linear-gradient(90deg, #4fc3f7 0%, #80ccff 100%);
+      color: #1a202c;
+      border-radius: 8px;
+      padding: 6px 18px;
+      font-weight: 700;
+      border: none;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #4fc3f73a;
+      transition: background 0.2s, color 0.2s;
+      margin-left: 8px;
+    }
+    .contribute a:hover {
+      background: linear-gradient(90deg, #80ccff 0%, #4fc3f7 100%);
+      color: #232b36;
+    }
+    /* Changelog Sidebar */
+    .changelog {
+      position: sticky;
+      top: 40px;
+      align-self: flex-start;
+      min-width: 320px;
+      max-width: 340px;
+      background: rgba(44,62,80,0.92);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #0004;
+      padding: 32px 24px 24px 24px;
+      margin-top: -120px;
+      z-index: 10;
+      border: 1.5px solid rgba(76,195,247,0.13);
+      backdrop-filter: blur(6px);
+      color: #e2e8f0;
+      font-size: 1.05rem;
+      transition: box-shadow 0.2s;
+    }
+    .changelog h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      color: #4fc3f7;
+      margin-top: 0;
+      margin-bottom: 1.1rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px #0005;
+    }
+    .changelog ul {
+      padding-left: 1.2em;
+      margin: 0 0 0.7em 0;
+    }
+    .changelog li {
+      margin-bottom: 0.7em;
+      line-height: 1.5;
+    }
+    .changelog .date {
+      color: #80ccff;
+      font-size: 0.98em;
+      font-weight: 700;
+      margin-right: 0.5em;
+    }
+    @media (max-width: 1100px) {
+      .container { flex-direction: column; gap: 0; }
+      .changelog { position: static; margin: 32px 0 0 0; max-width: 100%; min-width: 0; }
+    }
+    @media (max-width: 700px) {
+      .container { padding: 0 4px; }
+      .main-content { margin-top: 0; }
+      .glass-card { padding: 18px 6px 18px 6px; }
+      .changelog { padding: 18px 8px 18px 8px; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero p { font-size: 1.01rem; }
     }
     @media (max-width: 600px) {
-      .container { padding: 16px 4px; }
       table, thead, tbody, th, td, tr { display: block; }
       thead { display: none; }
       tr { margin-bottom: 1rem; }
-      td { padding: 0.5rem; border: none; border-bottom: 1px solid #333; position: relative; }
+      td { padding: 0.7rem; border: none; border-bottom: 1px solid #333; position: relative; }
       td:before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 0.3rem; color: #bbb; }
     }
   </style>
 </head>
 <body>
+  <div class="hero">
+    <h1>Simple Games for School</h1>
+    <p>Welcome to the most beautiful, easy-to-use collection of school-friendly games and tools. Download, play, and enjoy—no hassle, no ads, just fun. Premium and free games, all in one place, with a stunning modern interface.</p>
+  </div>
   <div class="container">
-    <h1>Games</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Source</th>
-          <th>Description</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Source">Miside</td>
-          <td data-label="Description">MiSide is an adventure game with horror elements, telling the story of a simple guy who, for mystical reasons, finds himself in a mobile simulation. Appearing ...</td>
-          <td data-label="Link"><a href="/miside">/games/miside/run_miside_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">Deltarune</td>
-          <td data-label="Description">A linear, chapter-based system that you can pick up from anywhere. Creative bullet-dodging based battles inspired by games like Touhou and Chrono Trigger.</td>
-          <td data-label="Link"><a href="/deltarune">/games/deltarune/run_deltarune_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">Madness Melee</td>
-          <td data-label="Description">Madness Melee is a 2D madness combat fangame. Enter the new Sleepwalker Program, and fight through 100 arena waves while upgrading your character the whole ...</td>
-          <td data-label="Link"><a href="/madness-melee">/games/madness-melee/run_madness_melee_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">Doki Doki Literature Club</td>
-          <td data-label="Description">Enter the #1 psychological horror experience! Discover why Doki Doki Literature Club is one of the most beloved psychological horror games of the decade.</td>
-          <td data-label="Link"><a href="/ddlc">/games/ddlc/run_ddlc_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">Bluestacks</td>
-          <td data-label="Description">Mobile game emulator for games like Clash Royale, Hayday, etc.</td>
-          <td data-label="Link"><a href="/bluestacks">/games/bluestacks/run_bluestacks_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">War Thunder</td>
-          <td data-label="Description">Fight on Land, on Water and in the Air. Experience authentic Battles. 10 Million Players. Historical Tanks & Planes...</td>
-          <td data-label="Link"><a href="/warthunder">/games/warthunder/run_warthunder_exe.ps</a></td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="margin-top:2rem; text-align:center;">
-      Want to contribute or add games yourself? 
-      <a href="https://github.com/Codewood-Eastwood/Minecraft4School">
-        Click here
-      </a>
-    </p>
-    <h1>Premium</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Source</th>
-          <th>Description</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Source">Rust</td>
-          <td data-label="Description">The only aim in Rust is to survive. Everything wants you to die - the island's wildlife and other inhabitants, the environment, other survivors.</td>
-          <td data-label="Link"><a href="/rust">/games/rust/run_rust_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">Steam (Work in progress)</td>
-          <td data-label="Description">Steam is a digital distribution service and storefront developed by Valve. It was launched as a software client in September 2003 to provide video game ...</td>
-          <td data-label="Link"><a href="/steam">/games/steam/run_steam_exe.ps</a></td>
-        </tr>
-        <tr>
-          <td data-label="Source">Minecraft (Works on some computers)</td>
-          <td data-label="Description">Dive into an open world of building, crafting, and survival in Minecraft - the ultimate sandbox building simulation game. Gather resources, survive the ...</td>
-          <td data-label="Link"><a href="/minecraft">/games/minecraft/run_minecraft_exe.ps</a></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="main-content">
+      <div class="glass-card">
+        <h2>Games</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Description</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Source">Bluestacks</td>
+              <td data-label="Description">Mobile game emulator for games like Clash Royale, Hayday, etc.</td>
+              <td data-label="Link"><a href="/bluestacks">/games/bluestacks/run_bluestacks_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">Deltarune</td>
+              <td data-label="Description">A linear, chapter-based system that you can pick up from anywhere. Creative bullet-dodging based battles inspired by games like Touhou and Chrono Trigger.</td>
+              <td data-label="Link"><a href="/deltarune">/games/deltarune/run_deltarune_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">Doki Doki Literature Club</td>
+              <td data-label="Description">Enter the #1 psychological horror experience! Discover why Doki Doki Literature Club is one of the most beloved psychological horror games of the decade.</td>
+              <td data-label="Link"><a href="/ddlc">/games/ddlc/run_ddlc_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">Miside</td>
+              <td data-label="Description">MiSide is an adventure game with horror elements, telling the story of a simple guy who, for mystical reasons, finds himself in a mobile simulation. Appearing ...</td>
+              <td data-label="Link"><a href="/miside">/games/miside/run_miside_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">Madness Melee</td>
+              <td data-label="Description">Madness Melee is a 2D madness combat fangame. Enter the new Sleepwalker Program, and fight through 100 arena waves while upgrading your character the whole ...</td>
+              <td data-label="Link"><a href="/madness-melee">/games/madness-melee/run_madness_melee_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">War Thunder</td>
+              <td data-label="Description">Fight on Land, on Water and in the Air. Experience authentic Battles. 10 Million Players. Historical Tanks & Planes...</td>
+              <td data-label="Link"><a href="/warthunder">/games/warthunder/run_warthunder_exe.ps</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="contribute">
+          Want to contribute or add games yourself?
+          <a href="https://github.com/Codewood-Eastwood/Minecraft4School">Contribute on GitHub</a>
+        </div>
+      </div>
+      <div class="glass-card">
+        <h2>Premium</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Description</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Source">Rust</td>
+              <td data-label="Description">The only aim in Rust is to survive. Everything wants you to die - the island's wildlife and other inhabitants, the environment, other survivors.</td>
+              <td data-label="Link"><a href="/rust">/games/rust/run_rust_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">Steam (Work in progress)</td>
+              <td data-label="Description">Steam is a digital distribution service and storefront developed by Valve. It was launched as a software client in September 2003 to provide video game ...</td>
+              <td data-label="Link"><a href="/steam">/games/steam/run_steam_exe.ps</a></td>
+            </tr>
+            <tr>
+              <td data-label="Source">Minecraft (Works on some computers)</td>
+              <td data-label="Description">Dive into an open world of building, crafting, and survival in Minecraft - the ultimate sandbox building simulation game. Gather resources, survive the ...</td>
+              <td data-label="Link"><a href="/minecraft">/games/minecraft/run_minecraft_exe.ps</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <aside class="changelog">
+      <h3>Changelog</h3>
+      <ul>
+        <li><span class="date">2025-07-02</span> Complete visual redesign: glassmorphism, gradients, hero section, sidebar changelog, elegant tables, and mobile-first responsive layout.</li>
+        <li><span class="date">2025-06-30</span> Added premium section, improved mobile experience, and enhanced color palette.</li>
+        <li><span class="date">2025-06-28</span> Added progress indicators and resume support to all download scripts.</li>
+        <li><span class="date">2025-06-25</span> Initial release of help page and game downloaders.</li>
+      </ul>
+      <div style="font-size:0.98em; color:#80ccff; margin-top:1.2em;">Want to see more features? <a href="https://github.com/Codewood-Eastwood/Minecraft4School" style="color:#4fc3f7;">Request on GitHub</a></div>
+    </aside>
   </div>
 </body>
 </html>
