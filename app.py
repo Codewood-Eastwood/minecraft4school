@@ -194,6 +194,16 @@ def download_script_exe():
     )
 
 
+@app.route('/gta4')  # Minecraft
+def download_gta4():
+    unique_id = request.cookies.get('client_id')
+    if not unique_id:
+        return render_template("login.html")
+    if logins[unique_id] not in premium_passwords:
+        return render_template("premium_requirement.html")
+    return script_response("games/gta/run_gta4_exe.ps")
+
+
 @app.route('/download-polymc')
 def download_polymc():
     return send_file(
