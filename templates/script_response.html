@@ -55,6 +55,26 @@
       margin-bottom: 0.5rem;
       letter-spacing: 0.5px;
     }
+    .copy-btn {
+      position: absolute;
+      top: 22px;
+      right: 32px;
+      background: #4fc3f7;
+      color: #1a202c;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: background 0.2s, color 0.2s;
+      z-index: 10;
+    }
+    .copy-btn.copied {
+      background: #38d39f;
+      color: #fff;
+    }
     h2 {
       font-size: 1.3rem;
       margin-top: 2rem;
@@ -95,6 +115,7 @@
       .glass-card { padding: 16px 4px; }
       .hero h1 { font-size: 1.3rem; }
       pre { font-size: 0.98rem; }
+      .copy-btn { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -103,9 +124,40 @@
     <h1>Script Output</h1>
   </div>
   <div class="glass-card">
+    <button class="copy-btn" onclick="copyScript(this)">Copy</button>
     <div class="filename">{{ filename }}</div>
-    <pre>{{ script_content }}</pre>
+    <pre id="script-content">{{ script_content }}</pre>
     <div class="instructions">{{ instructions|safe }}</div>
   </div>
+  <script>
+    function copyScript(btn) {
+      const pre = document.getElementById('script-content');
+      let text = pre.innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          btn.classList.add('copied');
+          btn.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.textContent = 'Copy';
+          }, 1400);
+        });
+      } else {
+        // fallback for old browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(textarea);
+        btn.classList.add('copied');
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = 'Copy';
+        }, 1400);
+      }
+    }
+  </script>
 </body>
 </html>
