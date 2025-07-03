@@ -1,5 +1,5 @@
 # Created by Angadpal Tak
-# version 1.24.6
+# version 1.25.1
 
 import uuid
 import threading
@@ -7,6 +7,7 @@ import time
 import logging
 from flask import Flask, send_file, render_template, request, make_response
 import sys
+from passwords import passwords, premium_passwords
 # flake8: noqa: E501
 
 app = Flask(__name__)
@@ -44,11 +45,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 logins: dict[str, str] = {}
-passwords: list[str] = ["caidon67", "grade3", "sixseven", "vedsucks123", "lovenatsuki", "130iq", "mnn3gkczLnH4", "ginger1"]
-premium_passwords: list[str] = ["caidon67", "mnn3gkczLnH4", "ginger1", "vedsucks123"]
 
 login_times: dict[str, float] = {}
-template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness-melee", "ddlc", "rust", "steam")
+template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness_melee", "ddlc", "rust", "steam", "bluestacks", "warthunder")
 
 @app.before_request
 def require_client_id():
@@ -136,7 +135,7 @@ def login():
     if request.method == 'POST':
         password = request.form.get('password')
         logger.info(f"Login attempt with password: {password} from {request.remote_addr}")
-        if password not in passwords:
+        if password not in passwords():
             logger.warning(f"Failed login attempt with password: {password} from {request.remote_addr}")
             return render_template('login_failure.html')
         if password in logins.values():
@@ -178,6 +177,8 @@ def download_minecraft_script():
 @app.route('/minecraft')  # Minecraft
 def download_minecraft():
     unique_id = request.cookies.get('client_id')
+    if not unique_id:
+        return render_template("login.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
     return script_response("games/minecraft/run_minecraft_exe.ps")
@@ -321,6 +322,8 @@ def rust_tar():
 @app.route('/steam')
 def steam():
     unique_id = request.cookies.get('client_id')
+    if not unique_id:
+        return render_template("login.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
     return script_response("games/steam/run_steam_exe.ps")
