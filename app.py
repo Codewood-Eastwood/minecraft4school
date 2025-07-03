@@ -1,5 +1,5 @@
 # Created by Angadpal Tak
-# version 1.24.6
+# version 1.25.1
 
 import uuid
 import threading
@@ -44,11 +44,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 logins: dict[str, str] = {}
-passwords: list[str] = ["caidon67", "grade3", "sixseven", "vedsucks123", "lovenatsuki", "130iq", "mnn3gkczLnH4", "ginger1"]
-premium_passwords: list[str] = ["caidon67", "mnn3gkczLnH4", "ginger1", "vedsucks123"]
+passwords: list[str] = ["caidon67", "grade3", "sixseven", "vedsucks123", "lovenatsuki", "130iq", "mnn3gkczLnH4", "ginger1", "thebluesky55", "massive123", "lowtaper67", "smeg67"]
+premium_passwords: list[str] = ["caidon67", "mnn3gkczLnH4", "ginger1", "vedsucks123", "massive123"]
 
 login_times: dict[str, float] = {}
-template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness-melee", "ddlc", "rust", "steam")
+template_returns: tuple[str] = ("minecraft", "deltarune", "miside", "madness_melee", "ddlc", "rust", "steam", "bluestacks", "warthunder")
 
 @app.before_request
 def require_client_id():
