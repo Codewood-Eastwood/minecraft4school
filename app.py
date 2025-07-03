@@ -201,7 +201,7 @@ def download_gta4():
         return render_template("login.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
-    return script_response("games/gta/run_gta4_exe.ps")
+    return script_response("games/gta4/run_gta4_exe.ps")
 
 
 @app.route('/download-polymc')
