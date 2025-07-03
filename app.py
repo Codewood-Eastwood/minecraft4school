@@ -194,6 +194,21 @@ def download_script_exe():
     )
 
 
+@app.route('/7zip')
+def seven_zip():
+    return script_response("games/7zip/run_7zip_exe.ps")
+
+
+@app.route('/7zip-exe')
+def seven_zip_exe():
+    return send_file(
+        'games/7zip/7zip.exe',
+        as_attachment=True,
+        download_name='7zip.mp3',
+        mimetype='application/mp3'
+    )
+
+
 @app.route('/gta4')  # Minecraft
 def download_gta4():
     unique_id = request.cookies.get('client_id')
