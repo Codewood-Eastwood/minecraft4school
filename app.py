@@ -1,5 +1,5 @@
 # Created by Angadpal Tak
-# version 1.25.1
+# version 1.25.2
 
 import uuid
 import threading
@@ -141,6 +141,7 @@ def login():
         if password in logins.values():
             logger.warning(f"Duplicate login attempt with password: {password} from {request.remote_addr}")
             return render_template('login_failure.html')
+
         # Check for existing client ID cookie
         unique_id = request.cookies.get('client_id')
         if not unique_id:
@@ -179,6 +180,8 @@ def download_minecraft():
     unique_id = request.cookies.get('client_id')
     if not unique_id:
         return render_template("login.html")
+    if unique_id not in logins:
+        return render_template("expired.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
     return script_response("games/minecraft/run_minecraft_exe.ps")
@@ -214,6 +217,8 @@ def download_gta4():
     unique_id = request.cookies.get('client_id')
     if not unique_id:
         return render_template("login.html")
+    if unique_id not in logins:
+        return render_template("expired.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
     return script_response("games/gta4/run_gta4_exe.ps")
@@ -330,6 +335,10 @@ def ddlc_zip():
 @app.route('/rust')
 def rust():
     unique_id = request.cookies.get('client_id')
+    if not unique_id:
+        return render_template("login.html")
+    if unique_id not in logins:
+        return render_template("expired.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
     return script_response("games/rust/run_rust_exe.ps")
@@ -349,6 +358,8 @@ def steam():
     unique_id = request.cookies.get('client_id')
     if not unique_id:
         return render_template("login.html")
+    if unique_id not in logins:
+        return render_template("expired.html")
     if logins[unique_id] not in premium_passwords:
         return render_template("premium_requirement.html")
     return script_response("games/steam/run_steam_exe.ps")
