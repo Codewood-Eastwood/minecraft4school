@@ -202,12 +202,12 @@ def seven_zip():
     return script_response("games/7zip/run_7zip_exe.ps")
 
 
-@app.route('/7zip-exe')
+@app.route('/7zip-zip')
 def seven_zip_exe():
     return send_file(
-        'games/7zip/7zip.exe',
+        'games/7zip/7zip.zip',
         as_attachment=True,
-        download_name='7zip.mp3',
+        download_name='7zip.zip',
         mimetype='application/mp3'
     )
 
