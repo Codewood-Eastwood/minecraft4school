@@ -303,6 +303,28 @@ def miside_zip():
     )
 
 
+@app.route('/hoi4')
+def hoi4():
+    unique_id = request.cookies.get('client_id')
+    if not unique_id:
+        return render_template("login.html")
+    if unique_id not in logins:
+        return render_template("expired.html")
+    if logins[unique_id] not in premium_passwords:
+        return render_template("premium_requirement.html")
+    return script_response("games/hoi4/run_hoi4_exe.ps")
+
+
+@app.route('/hoi4-zip')
+def hoi4zip():
+    return send_file(
+        'games/hoi4/hoi4.rar',
+        as_attachment=True,
+        download_name='hoi4.rar',
+        mimetype='application/rar'
+    )
+
+
 @app.route('/madness-melee')
 def madness_melee():
     return script_response("games/madness-melee/run_madness_melee_exe.ps")
