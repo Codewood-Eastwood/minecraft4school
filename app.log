@@ -14,3 +14,462 @@
 [2025-07-02 18:25:50,348] INFO in _internal:  * Restarting with stat
 [2025-07-02 18:25:50,617] WARNING in _internal:  * Debugger is active!
 [2025-07-02 18:25:50,619] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:53:19,205] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:15028
+ * Running on http://192.168.1.36:15028
+[2025-07-05 13:53:19,205] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-07-05 13:53:19,206] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:53:19,460] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:53:19,462] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:53:21,056] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 13:53:21,057] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:53:21] "[33mGET / HTTP/1.1[0m" 404 -
+[2025-07-05 13:53:21,159] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 13:53:21,160] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:53:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-07-05 13:56:08,527] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:15028
+ * Running on http://192.168.1.36:15028
+[2025-07-05 13:56:08,527] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-07-05 13:56:08,528] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:56:08,773] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:56:08,776] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:56:15,679] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 13:56:15,683] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:56:15] "GET / HTTP/1.1" 200 -
+[2025-07-05 13:56:53,719] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 13:56:53,720] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:56:53] "GET / HTTP/1.1" 200 -
+[2025-07-05 13:57:00,094] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 13:57:00,094] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:57:00] "[33mPOST /login HTTP/1.1[0m" 404 -
+[2025-07-05 13:57:38,029] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 13:57:38,058] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:57:38,350] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:57:38,352] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:57:51,200] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 13:57:51,225] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:57:51,480] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:57:51,483] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:57:59,029] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 13:57:59,055] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:57:59,307] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:57:59,309] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:58:03,665] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 13:58:03,693] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:58:03,961] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:58:03,963] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:58:15,756] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 13:58:15,783] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:58:16,061] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:58:16,063] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:58:19,798] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 13:58:19,802] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:19] "GET / HTTP/1.1" 200 -
+[2025-07-05 13:58:21,829] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 13:58:21,853] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:21] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-07-05 13:58:21,926] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:21] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2025-07-05 13:58:21,937] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:21] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2025-07-05 13:58:21,967] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:21] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=5TIBDQ4EdFChgHS3sDIT HTTP/1.1" 200 -
+[2025-07-05 13:58:21,977] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:21] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2025-07-05 13:58:29,999] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 13:58:30,025] INFO in _internal:  * Restarting with stat
+[2025-07-05 13:58:30,299] WARNING in _internal:  * Debugger is active!
+[2025-07-05 13:58:30,301] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 13:58:38,026] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 13:58:38,029] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:38] "POST /login HTTP/1.1" 200 -
+[2025-07-05 13:58:39,688] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 13:58:39,688] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:39] "POST /login HTTP/1.1" 200 -
+[2025-07-05 13:58:41,783] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 13:58:41,784] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 13:58:41] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:00:05,923] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:00:05,950] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:00:06,221] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:00:06,223] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:00:13,779] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:00:13,805] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:00:14,057] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:00:14,059] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:00:17,749] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:00:17,780] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:00:17] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:00:22,269] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:00:22,270] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:00:22] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:00:28,055] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:00:28,055] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:00:28] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:00:31,865] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:00:31,866] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:00:31] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:00:37,700] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:00:37,702] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:00:37] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:01:10,413] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:01:10,439] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:01:10,710] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:01:10,712] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:01:17,239] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:01:17,242] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:01:17] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:01:22,824] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:01:22,832] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:01:22] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:06:04,578] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:06:04,603] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:06:04,874] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:06:04,876] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:07:10,840] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:07:10,869] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:07:11,142] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:07:11,144] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:07:21,887] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:07:21,910] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:07:22,164] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:07:22,167] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:07:40,325] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:07:40,354] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:07:40,636] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:07:40,638] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:08:23,206] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:08:23,234] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:08:23,496] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:08:23,498] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:09:32,652] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:09:32,677] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:09:32,955] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:09:32,957] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:09:37,335] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:09:37,363] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:09:37,640] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:09:37,642] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:09:47,794] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:09:47,798] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:09:47] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:09:50,258] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:09:50,259] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:09:50] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:09:50,355] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:09:50,356] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:09:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-07-05 14:09:56,198] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:09:56,201] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:09:56] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:10:01,154] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:10:01,155] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:10:01] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:11:58,087] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:11:58,113] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:11:58,392] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:11:58,394] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:12:31,441] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:12:31,471] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:12:31,777] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:12:31,780] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:13:09,162] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:13:09,214] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:13:09,491] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:13:09,493] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:13:10,681] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:13:10,709] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:13:10,952] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:13:10,955] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:13:14,261] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:13:14,288] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:13:14,534] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:13:14,536] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:14:31,077] INFO in _internal:  * Detected change in 'C:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:14:31,103] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:17:42,416] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:15028
+ * Running on http://192.168.1.36:15028
+[2025-07-05 14:17:42,416] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-07-05 14:17:42,417] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:17:42,680] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:17:42,683] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:17:51,180] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:17:51,185] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:17:51] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:17:59,919] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:17:59,923] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:17:59] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:18:01,701] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:18:01,702] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:18:01] "[33mGET /hoi4 HTTP/1.1[0m" 404 -
+[2025-07-05 14:18:04,310] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:18:04,310] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:18:04] "[33mGET /rust HTTP/1.1[0m" 404 -
+[2025-07-05 14:18:05,347] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:18:05,347] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:18:05] "[33mGET /steam HTTP/1.1[0m" 404 -
+[2025-07-05 14:18:26,349] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:18:26,379] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:18:26,638] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:18:26,640] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:18:34,203] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:18:34,206] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:18:34] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:19:17,244] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:19:17,244] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:19:17] "[31m[1mGET /get-script HTTP/1.1[0m" 405 -
+[2025-07-05 14:24:50,209] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:24:50,235] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:24:50,502] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:24:50,505] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:24:57,818] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:24:57,822] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:24:57] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:25:11,071] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:15028
+ * Running on http://192.168.1.36:15028
+[2025-07-05 14:25:11,072] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-07-05 14:25:11,073] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:25:11,331] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:25:11,333] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:25:12,319] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:25:12,325] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:25:12] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:25:17,086] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:25:17,151] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:25:17] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-07-05 14:25:17,222] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:25:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2025-07-05 14:25:17,223] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:25:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2025-07-05 14:25:17,250] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:25:17] "GET /login?__debugger__=yes&cmd=resource&f=console.png&s=cNse7GPlLiqivPLd9tVA HTTP/1.1" 200 -
+[2025-07-05 14:25:17,261] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:25:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2025-07-05 14:26:19,558] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:26:19,616] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:26:19,883] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:26:19,885] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:26:24,885] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:26:24,888] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:24] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:26:39,569] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:26:39,586] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:39] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:26:58,577] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:26:58,584] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:58] "[35m[1mPOST /get-script HTTP/1.1[0m" 500 -
+[2025-07-05 14:26:58,650] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:58] "GET /get-script?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[2025-07-05 14:26:58,652] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:58] "GET /get-script?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[2025-07-05 14:26:58,659] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:58] "GET /get-script?__debugger__=yes&cmd=resource&f=console.png&s=LdBaSxlKEQnaWjAdc1ur HTTP/1.1" 200 -
+[2025-07-05 14:26:58,669] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:26:58] "GET /get-script?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[2025-07-05 14:27:04,471] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:27:04,476] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:04] "[35m[1mPOST /get-script HTTP/1.1[0m" 500 -
+[2025-07-05 14:27:04,488] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:04] "[36mGET /get-script?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2025-07-05 14:27:04,488] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:04] "[36mGET /get-script?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2025-07-05 14:27:04,501] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:04] "[36mGET /get-script?__debugger__=yes&cmd=resource&f=console.png&s=LdBaSxlKEQnaWjAdc1ur HTTP/1.1[0m" 304 -
+[2025-07-05 14:27:25,372] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:27:25,378] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:25] "[35m[1mPOST /get-script HTTP/1.1[0m" 500 -
+[2025-07-05 14:27:25,385] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:25] "[36mGET /get-script?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2025-07-05 14:27:25,386] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:25] "[36mGET /get-script?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2025-07-05 14:27:25,393] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:27:25] "[36mGET /get-script?__debugger__=yes&cmd=resource&f=console.png&s=LdBaSxlKEQnaWjAdc1ur HTTP/1.1[0m" 304 -
+[2025-07-05 14:27:58,867] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:27:58,901] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:27:59,171] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:27:59,173] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:28:02,343] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:28:02,348] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:02] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:28:04,704] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:28:04,706] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:04] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:28:13,310] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:28:13,311] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:13] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:28:16,953] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:28:16,954] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:16] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:28:20,583] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:28:20,612] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:28:20,864] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:28:20,866] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:28:24,918] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:28:24,923] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:24] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:28:28,746] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:28:28,746] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:28] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:28:31,932] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:28:31,933] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:28:31] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:14,282] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:31:14,309] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:31:14,577] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:31:14,580] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:31:19,475] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:31:19,478] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:19] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:31:20,548] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:31:20,566] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:20] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:31:23,735] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:23,736] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:23] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:25,918] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:25,918] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:25] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:27,905] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:27,905] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:27] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:28,385] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:28,385] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:28] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:30,673] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:30,674] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:30] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:31,801] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:31,802] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:31] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:32,433] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:32,434] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:32] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:33,508] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:33,509] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:33] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:33,942] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:33,943] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:33] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:34,455] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:34,455] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:34] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:34,953] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:34,954] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:34] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:31:35,604] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:31:35,604] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:31:35] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:32:55,598] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:32:55,622] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:32:55,875] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:32:55,877] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:33:00,577] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:33:00,581] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:00] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:33:02,127] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:33:02,129] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:02] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:33:04,534] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:33:04,535] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:04] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:33:07,760] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:33:07,760] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:07] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:33:11,498] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:33:11,499] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:11] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:33:12,500] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:33:12,500] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:12] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:33:16,197] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:33:16,223] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:33:16,470] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:33:16,472] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:33:19,389] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:33:19,393] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:19] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:33:21,357] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:33:21,360] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:21] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:33:35,318] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:33:35,319] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:35] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:33:38,646] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:33:38,647] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:38] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:33:42,280] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:33:42,280] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:42] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:33:43,275] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:33:43,275] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:43] "[33mGET /index HTTP/1.1[0m" 404 -
+[2025-07-05 14:33:45,105] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:33:45,105] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:45] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:33:46,303] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:33:46,304] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:46] "[31m[1mGET /login HTTP/1.1[0m" 405 -
+[2025-07-05 14:33:48,749] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:33:48,749] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:48] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:33:50,541] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:33:50,541] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:33:50] "POST /login HTTP/1.1" 200 -
+[2025-07-05 14:34:25,532] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:34:25,565] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:34:25,844] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:34:25,847] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:34:27,029] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:34:27,057] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:34:27,317] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:34:27,319] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:34:55,024] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:34:55,056] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:34:55,358] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:34:55,361] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:35:02,933] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:35:02,936] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:02] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:35:05,359] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:35:05,362] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:05] "[32mPOST /login HTTP/1.1[0m" 302 -
+[2025-07-05 14:35:05,365] INFO in app: Request to games from 127.0.0.1
+[2025-07-05 14:35:05,365] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:05] "GET /games HTTP/1.1" 200 -
+[2025-07-05 14:35:07,166] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:07,168] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:07] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:08,358] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:08,359] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:08] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:10,011] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:10,012] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:10] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:10,969] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:10,969] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:10] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:11,928] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:11,929] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:11] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:13,576] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:13,577] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:13] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:14,505] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:14,505] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:14] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:15,786] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:15,787] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:15] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:16,722] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:16,723] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:16] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:17,734] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:17,735] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:17] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:24,596] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:35:24,597] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:24] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:35:30,565] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:35:30,566] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+[2025-07-05 14:35:30,569] INFO in app: Request to games from 127.0.0.1
+[2025-07-05 14:35:30,570] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:30] "GET /games HTTP/1.1" 200 -
+[2025-07-05 14:35:31,874] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:31,875] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:31] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:33,480] INFO in app: Request to None from 127.0.0.1
+[2025-07-05 14:35:33,480] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:33] "[31m[1mGET /login HTTP/1.1[0m" 405 -
+[2025-07-05 14:35:36,633] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:36,634] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:36] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:56,138] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:35:56,167] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:35:56,423] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:35:56,426] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:35:57,632] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:35:57,648] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:57] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:35:58,761] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:35:58,763] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:35:58] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:36:00,158] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:36:00,161] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:36:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+[2025-07-05 14:36:00,164] INFO in app: Request to games from 127.0.0.1
+[2025-07-05 14:36:00,164] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:36:00] "GET /games HTTP/1.1" 200 -
+[2025-07-05 14:36:02,099] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:36:02,101] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:36:02] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:36:32,044] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:36:32,045] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:36:32] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:37:03,341] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:37:03,368] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:37:27,113] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:15028
+ * Running on http://192.168.1.36:15028
+[2025-07-05 14:37:27,113] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-07-05 14:37:27,114] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:37:27,366] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:37:27,368] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:37:28,656] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:37:28,660] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:28] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:37:32,771] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:37:32,771] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:32] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:37:33,885] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:37:33,889] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+[2025-07-05 14:37:33,892] INFO in app: Request to games from 127.0.0.1
+[2025-07-05 14:37:33,892] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:33] "GET /games HTTP/1.1" 200 -
+[2025-07-05 14:37:34,699] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:37:34,700] INFO in app: /7zip/run_7zip_exe.ps
+[2025-07-05 14:37:34,702] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:34] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:37:41,295] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:37:41,322] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:37:41,594] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:37:41,596] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:37:44,015] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:37:44,016] INFO in app: /7zip/run_7zip_exe.ps
+[2025-07-05 14:37:44,019] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:44] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:37:45,826] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:37:45,826] INFO in app: /deltarune/run_deltarune_exe.ps
+[2025-07-05 14:37:45,827] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:45] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:37:56,670] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:37:56,670] INFO in app: /miside/run_miside_exe.ps
+[2025-07-05 14:37:56,671] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:37:56] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:38:14,608] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:38:14,632] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:38:14,913] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:38:14,915] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:38:17,625] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:38:17,626] INFO in app: games/miside/run_miside_exe.ps
+[2025-07-05 14:38:17,629] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:38:17] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:38:19,417] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:38:19,417] INFO in app: games/madness_melee/run_madness_melee_exe.ps
+[2025-07-05 14:38:19,418] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:38:19] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:38:20,567] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:38:20,567] INFO in app: games/hoi4/run_hoi4_exe.ps
+[2025-07-05 14:38:20,568] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:38:20] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:38:31,361] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:38:31,361] INFO in app: games/7zip/run_7zip_exe.ps
+[2025-07-05 14:38:31,362] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:38:31] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:39:16,616] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:39:16,643] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:39:16,917] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:39:16,920] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:39:22,223] INFO in app: Request to index from 127.0.0.1
+[2025-07-05 14:39:22,226] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:39:22] "GET / HTTP/1.1" 200 -
+[2025-07-05 14:39:23,368] INFO in app: Request to login from 127.0.0.1
+[2025-07-05 14:39:23,372] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:39:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+[2025-07-05 14:39:23,375] INFO in app: Request to games from 127.0.0.1
+[2025-07-05 14:39:23,375] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:39:23] "GET /games HTTP/1.1" 200 -
+[2025-07-05 14:39:25,211] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:39:25,211] INFO in app: games/hoi4/run_hoi4_exe.ps
+[2025-07-05 14:39:25,214] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:39:25] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:39:26,810] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:39:26,810] INFO in app: games/miside/run_miside_exe.ps
+[2025-07-05 14:39:26,811] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:39:26] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:39:28,799] INFO in app: Request to get_script from 127.0.0.1
+[2025-07-05 14:39:28,800] INFO in app: games/7zip/run_7zip_exe.ps
+[2025-07-05 14:39:28,800] INFO in _internal: 127.0.0.1 - - [05/Jul/2025 14:39:28] "POST /get-script HTTP/1.1" 200 -
+[2025-07-05 14:41:42,535] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:41:42,564] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:41:42,838] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:41:42,841] INFO in _internal:  * Debugger PIN: 783-216-381
+[2025-07-05 14:42:18,966] INFO in _internal:  * Detected change in 'c:\\Users\\angad\\Desktop\\Minecraft4School\\app.py', reloading
+[2025-07-05 14:42:18,988] INFO in _internal:  * Restarting with stat
+[2025-07-05 14:42:19,265] WARNING in _internal:  * Debugger is active!
+[2025-07-05 14:42:19,267] INFO in _internal:  * Debugger PIN: 783-216-381
