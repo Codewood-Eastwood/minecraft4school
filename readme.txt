@@ -1,7 +1,7 @@
 # Originally intended for just Minecraft, it has expanded into other games aswell.
 # Made for The Eastwood Academy systems
 
-# Go to http://mc.fissionhost.org:15028 to use it at school
+# Go to http://eastwoodgames.duckdns.org to use it at school
 
 # How to run your own service
 
