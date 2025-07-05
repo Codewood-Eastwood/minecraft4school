@@ -238,6 +238,18 @@
               </td>
             </tr>
             <tr>
+              <td data-label="Source">Sims4</td>
+              <td data-label="Description">Unleash your imagination and create a unique world of Sims that's an expression of you! Explore and customize every detail from Sims to homes, and much more. A variety of Sims ar...</td>
+              <td data-label="Link">
+                <form action="/get-script" method="post" style="margin:0;">
+                  <input type="hidden" name="game" value="sims4">
+                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
+                  /games/sims4/run_sims4_exe.ps
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <tr>
               <td data-label="Source">Deltarune</td>
               <td data-label="Description">A linear, chapter-based system that you can pick up from anywhere. Creative bullet-dodging based battles inspired by games like Touhou and Chrono Trigger.</td>
               <td data-label="Link">
@@ -245,30 +257,6 @@
                   <input type="hidden" name="game" value="deltarune">
                   <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
                   /games/deltarune/run_deltarune_exe.ps
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="Source">Doki Doki Literature Club</td>
-              <td data-label="Description">Enter the #1 psychological horror experience! Discover why Doki Doki Literature Club is one of the most beloved psychological horror games of the decade.</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="ddlc">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/ddlc/run_ddlc_exe.ps
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="Source">Miside</td>
-              <td data-label="Description">MiSide is an adventure game with horror elements, telling the story of a simple guy who, for mystical reasons, finds himself in a mobile simulation. Appearing ...</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="miside">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/miside/run_miside_exe.ps
                   </button>
                 </form>
               </td>
@@ -317,7 +305,7 @@
                 </td>
             </tr>
             <tr>
-              <td data-label="Source">GTA4 (Work in progress)</td>
+              <td data-label="Source">GTA4</td>
               <td data-label="Description">Grand Theft Auto IV is a 2008 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the sixth main entry in the Grand ...</td>
               <td data-label="Link">
                 <form action="/get-script" method="post" style="margin:0;">
@@ -371,6 +359,7 @@
     <aside class="changelog">
       <h3>Changelog</h3>
       <ul>
+        <li><span class="date">2025-07-05</span> Overhauled backend to allow for a shorter url, smaller and cleaner code, and FASTER DOWNLOAD SPEEDS (may vary from computer to computer)</li>
         <li><span class="date">2025-07-02</span> Complete visual redesign: glassmorphism, gradients, hero section, sidebar changelog, elegant tables, and mobile-first responsive layout.</li>
         <li><span class="date">2025-06-30</span> Added premium section, improved mobile experience, and enhanced color palette.</li>
         <li><span class="date">2025-06-28</span> Added progress indicators and resume support to all download scripts.</li>
@@ -378,6 +367,21 @@
       </ul>
       <div style="font-size:0.98em; color:#80ccff; margin-top:1.2em;">Want to see more features? <a href="https://github.com/Codewood-Eastwood/Minecraft4School" style="color:#4fc3f7;">Request on GitHub</a></div>
     </aside>
+  </div>
+  <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+    <a href="/passwords" style="
+      display: inline-block;
+      background: linear-gradient(90deg, #4fc3f7 0%, #80ccff 100%);
+      color: #1a202c;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #4fc3f73a;
+      transition: background 0.2s, color 0.2s;">
+      Password Manager
+    </a>
   </div>
 </body>
 </html>
