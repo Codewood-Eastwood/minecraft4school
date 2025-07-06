@@ -142,7 +142,7 @@ def download_script(game):
 def get_script():
     game = request.form.get('game')
     password = request.cookies.get('password')
-    if game in premium_games and password not in passwords.premium_passwords:
+    if game in premium_games and password not in [password["password"] for password in passwords.get_premium_passwords()]:
         return render_template("premium_requirement.html")
     
     script_path = f"scripts/run_{game}_exe.ps"
@@ -157,7 +157,14 @@ def get_script():
     return render_template("script_response.html",
                            filename=script_path,
                            script_content=script_content,
-                           download_url=download_url)
+                           download_url=download_url,
+                           instructions="""
+1. Open <a href="/image-help" target="_blank">Windows Powershell</a><br>
+2. Paste the above code in when loaded<br>
+3. Press enter, if it isn't lagging then something will happen<br>
+4. For image help, click <a href="/image-help" target="_blank">here</a>
+"""
+                           )
     
 
 def restart_app():

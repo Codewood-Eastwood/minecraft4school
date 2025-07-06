@@ -61,6 +61,7 @@ def delete_password(name: str):
     _save_passwords(new_passwords)
 
 def get_premium_passwords() -> list[dict]:
+    print([entry for entry in _load_passwords() if entry.get('premium')])
     return [entry for entry in _load_passwords() if entry.get('premium')]
 
 def add_premium_password(name: str, password: str):
