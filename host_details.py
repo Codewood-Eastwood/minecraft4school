@@ -9,16 +9,56 @@ import getpass
 import uuid
 import locale
 import shutil
+import pickle
+from pathlib import Path
+
+# Cache configuration
+CACHE_FILE = "host_details_cache.pkl"
+CACHE_EXPIRY = 3600  # Cache expiry time in seconds (1 hour)
 
 host_details = {}
 
+def load_from_cache():
+    """Load cached data if it exists and isn't expired."""
+    if not Path(CACHE_FILE).exists():
+        return None
+    
+    cache_time = Path(CACHE_FILE).stat().st_mtime
+    if (time.time() - cache_time) > CACHE_EXPIRY:
+        return None
+    
+    try:
+        with open(CACHE_FILE, 'rb') as f:
+            return pickle.load(f)
+    except:
+        return None
+
+def save_to_cache(data):
+    """Save data to cache file."""
+    try:
+        with open(CACHE_FILE, 'wb') as f:
+            pickle.dump(data, f)
+    except:
+        pass  # Silently fail if cache can't be written
+
 def safe_get(key, func):
+    """Safely get system information, using cache when possible."""
+    # Try to get from cache first
+    if key in cached_data:
+        host_details[key] = cached_data[key]
+        print(f"Loaded {key} from cache")
+        return
+    
+    # If not in cache or cache miss, get fresh data
     try:
         host_details[key] = func()
-        print("Loaded {}".format(key))
+        print(f"Loaded {key} (fresh)")
     except Exception as e:
         host_details[key] = f"Error: {e}"
-        print("Failed to load {}".format(key))
+        print(f"Failed to load {key}")
+
+# Try to load from cache
+cached_data = load_from_cache() or {}
 
 # Basic Info
 safe_get('Hostname', lambda: socket.gethostname())
@@ -75,3 +115,7 @@ safe_get('Current Time', lambda: time.strftime('%Y-%m-%d %H:%M:%S', time.localti
 
 # UUID
 safe_get('System UUID', lambda: str(uuid.uuid1()))
+
+# Save to cache (only if we have fresh data)
+if host_details and host_details != cached_data:
+    save_to_cache(host_details)
