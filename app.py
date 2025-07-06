@@ -161,25 +161,6 @@ def restart_app():
     with open(filename, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
-    # Line index for version line (line 2 is index 1)
-    version_line = lines[1].strip()
-
-    # Expected format: '# version 1.28.3'
-    if version_line.startswith("# version "):
-        version_str = version_line[len("# version "):]  # "1.28.3"
-        parts = version_str.split('.')
-        if len(parts) == 3 and all(p.isdigit() for p in parts):
-            major, minor, patch = map(int, parts)
-            patch += 1  # increment patch
-            new_version = f"# version {major}.{minor}.{patch}"
-            lines[1] = new_version + "\n"
-        else:
-            # Handle unexpected format gracefully
-            print("Version line format unexpected; skipping version increment.")
-    else:
-        print("No version line found on line 2; skipping version increment.")
-
-    # Write back the updated lines
     with open(filename, 'w', encoding='utf-8') as file:
         file.writelines(lines)
 
