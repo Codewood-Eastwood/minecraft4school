@@ -4,6 +4,7 @@
 *.tar
 *.rar
 *.7z
+*.log
 
 .history
 .vscode
@@ -12,9 +13,11 @@ bin
 include
 lib
 lib64
-pyvenv.cfg
 build
 dist
+
+pyvenv.cfg
+app.log
 
 passwords.py
 passwords_data.json
