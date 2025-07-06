@@ -57,13 +57,20 @@ def password_manager(error=None):
 @app.route('/passwords/search')
 def search_passwords():
     query = request.args.get('query', '').lower()
-    search_results = []
+    all_passwords = passwords.get_passwords()
+    premium_passwords = passwords.get_premium_passwords()
     if query:
-        search_results = [
-            entry for entry in passwords.get_passwords()
-            if query in entry['name'].lower() or query in entry['password'].lower()
-        ]
-    return render_template('password_builder.html', passwords=passwords.get_passwords(), search_results=search_results)
+        filtered_normal = [p for p in all_passwords if not p.get('premium') and (query in p['name'].lower() or query in p['password'].lower())]
+        filtered_premium = [p for p in premium_passwords if query in p['name'].lower() or query in p['password'].lower()]
+    else:
+        filtered_normal = [p for p in all_passwords if not p.get('premium')]
+        filtered_premium = premium_passwords
+    return render_template('password_builder.html',
+        all_passwords=filtered_normal,
+        premium_passwords=filtered_premium,
+        error=None,
+        host_details=host_details
+    )
 
 
 @app.route('/login', methods=['POST'])
