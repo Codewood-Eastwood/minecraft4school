@@ -15,8 +15,10 @@ host_details = {}
 def safe_get(key, func):
     try:
         host_details[key] = func()
+        print("Loaded {}".format(key))
     except Exception as e:
         host_details[key] = f"Error: {e}"
+        print("Failed to load {}".format(key))
 
 # Basic Info
 safe_get('Hostname', lambda: socket.gethostname())
