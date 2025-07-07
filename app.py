@@ -252,4 +252,4 @@ def delete_password():
     return password_manager(error)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=443, debug=True, ssl_context='adhoc')
+    app.run(host="0.0.0.0", port=443, debug=True)
