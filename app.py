@@ -30,11 +30,6 @@ def index():
     return render_template("login.html")
 
 
-@app.route('/games')
-def games():
-    return render_template("help.html")
-
-
 @app.route('/passwords')
 def password_manager(error=None):
     password = request.cookies.get('password')
@@ -73,20 +68,22 @@ def search_passwords():
     )
 
 
+@app.route('/work')
+def work():
+    return render_template("help.html")
+
+
 @app.route('/login', methods=['POST'])
 def login():
     password = request.form.get('password')
     if password:
-        if password == "caidon67":
-            return render_template("login.html", error="Your new password is: `caidon69`")
-
         if password in [password["password"] for password in passwords.get_passwords()]:
             if password in passwords_in_use.values() and password != "mnn3gkczLnH4":
                 return render_template("login.html", error="Password will expire in: {} minutes".format(
                     int((list(passwords_in_use.keys())[list(passwords_in_use.values()).index(password)] - datetime.now(timezone.utc)).total_seconds() // 60)
                 ))
             resp = make_response(render_template("help.html"))
-            resp.headers["Location"] = "/games"
+            resp.headers["Location"] = "/work"
             resp.status_code = 302
             resp.set_cookie("password", password)
 
