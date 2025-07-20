@@ -1,387 +1,890 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Help - Simple Games</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codewood Game Portal | Premium School Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&family=Tomorrow:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #00f0ff;
+      --primary-dark: #0066ff;
+      --secondary: #ff00f0;
+      --accent: #00ff66;
+      --dark: #0a0a1a;
+      --darker: #050510;
+      --light: #f0f0ff;
+      --glass: rgba(20, 20, 40, 0.7);
+      --glass-light: rgba(100, 100, 150, 0.3);
+      --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary-dark);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       min-height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
-      font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #f5f7fa;
+      background: radial-gradient(ellipse at bottom, var(--darker) 0%, var(--dark) 100%);
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--light);
       overflow-x: hidden;
+      position: relative;
+      line-height: 1.6;
     }
+    
+    /* Cyberpunk grid overlay */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Animated particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float-up linear infinite;
+    }
+    
+    @keyframes float-up {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-100px); }
+    }
+    
+    /* Header with scanline effect */
     .hero {
-      width: 100vw;
-      min-height: 340px;
-      background: linear-gradient(120deg, rgba(76,195,247,0.18) 0%, rgba(128,204,255,0.12) 100%);
+      width: 100%;
+      min-height: 500px;
+      padding: 100px 24px 80px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      padding: 64px 16px 32px 16px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #4fc3f7;
-      margin: 0 0 16px 0;
-      text-shadow: 0 4px 32px #000a, 0 1px 0 #fff2;
-    }
-    .hero p {
-      font-size: 1.3rem;
-      color: #e2e8f0;
-      max-width: 600px;
       text-align: center;
-      margin: 0 auto 0 auto;
-      line-height: 1.6;
-      text-shadow: 0 2px 12px #0005;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 240, 255, 0.1) 100%);
+      border-bottom: 1px solid var(--glass-light);
     }
-    .container {
-      max-width: 1500px;
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 95%,
+        rgba(0, 240, 255, 0.1) 96%,
+        transparent 97%
+      );
+      background-size: 100% 10px;
+      animation: scanline 8s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes scanline {
+      from { background-position: 0 0; }
+      to { background-position: 0 100vh; }
+    }
+    
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: var(--neon-glow);
+      letter-spacing: 2px;
+      line-height: 1.1;
+      position: relative;
+    }
+    
+    .hero h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      filter: drop-shadow(var(--neon-glow));
+    }
+    
+    .hero p {
+      font-family: 'Tomorrow', sans-serif;
+      font-size: 1.5rem;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 0 24px 48px 24px;
-      display: flex;
+      color: rgba(240, 240, 255, 0.9);
+      line-height: 1.6;
+      text-shadow: 0 0 5px var(--primary);
+    }
+    
+    /* Main container */
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
       gap: 40px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
-    .main-content {
-      flex: 2 1 0%;
-      margin-top: -60px;
+    
+    /* Cyber card styling */
+    .cyber-card {
+      background: var(--glass);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-light);
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3), 
+                  inset 0 0 20px rgba(0, 240, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
     }
-    .glass-card {
-      background: rgba(35,43,54,0.82);
-      border-radius: 22px;
-      box-shadow: 0 8px 40px 0 rgba(0,0,0,0.28), 0 1.5px 0 #4fc3f7;
-      padding: 36px 32px 32px 32px;
-      margin-bottom: 32px;
-      backdrop-filter: blur(8px);
-      border: 1.5px solid rgba(76,195,247,0.13);
-      transition: box-shadow 0.2s;
+    
+    .cyber-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent 45%,
+        rgba(0, 240, 255, 0.1) 50%,
+        transparent 55%
+      );
+      transform: rotate(30deg);
+      animation: shine 6s infinite;
     }
-    .glass-card:hover {
-      box-shadow: 0 12px 60px 0 rgba(76,195,247,0.18), 0 1.5px 0 #4fc3f7;
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
     }
-    h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      color: #80ccff;
-      margin-top: 0;
-      margin-bottom: 1.2rem;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 12px #0005;
+    
+    .cyber-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 60px rgba(0, 102, 255, 0.4), 
+                  inset 0 0 30px rgba(0, 240, 255, 0.2);
     }
-    table {
+    
+    .cyber-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-shadow: 0 0 10px var(--primary);
+    }
+    
+    .cyber-card h2 i {
+      font-size: 2.2rem;
+      color: var(--secondary);
+    }
+    
+    /* Holographic table */
+    .holographic-table {
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      margin-top: 1rem;
-      background: rgba(44,62,80,0.92);
-      border-radius: 14px;
+      margin-top: 1.5rem;
+      background: rgba(10, 15, 30, 0.7);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 12px #0003;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
     }
-    th, td {
+    
+    .holographic-table::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 240, 255, 0.05) 0%,
+        rgba(255, 0, 240, 0.05) 100%
+      );
+      pointer-events: none;
+    }
+    
+    .holographic-table thead {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      color: var(--darker);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .holographic-table th {
+      padding: 18px 24px;
       text-align: left;
-      padding: 1.1rem 1.2rem;
-      font-size: 1.05rem;
-    }
-    thead {
-      background: linear-gradient(90deg, #4fc3f7 0%, #80ccff 100%);
-      color: #1a202c;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    tbody tr:nth-child(odd) {
-      background-color: rgba(34,39,43,0.92);
-    }
-    tbody tr:hover {
-      background: linear-gradient(90deg, #232b36 0%, #2c3e50 100%);
-      transition: background 0.2s;
-    }
-    td {
-      font-family: 'Roboto Mono', monospace;
-      color: #e2e8f0;
-    }
-    a {
-      color: #4fc3f7;
-      text-decoration: none;
-      border-bottom: 1.5px dashed #4fc3f7;
-      transition: color 0.2s, border-bottom 0.2s;
-      font-weight: 500;
-    }
-    a:hover {
-      color: #fff;
-      border-bottom: 1.5px solid #fff;
-    }
-    .contribute {
-      margin-top:2.5rem;
-      text-align:center;
       font-size: 1.1rem;
+      text-transform: uppercase;
     }
-    .contribute a {
-      background: linear-gradient(90deg, #4fc3f7 0%, #80ccff 100%);
-      color: #1a202c;
+    
+    .holographic-table td {
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+      vertical-align: middle;
+      font-family: 'Tomorrow', sans-serif;
+    }
+    
+    .holographic-table tbody tr {
+      transition: all 0.3s ease;
+    }
+    
+    .holographic-table tbody tr:hover {
+      background: rgba(0, 240, 255, 0.05);
+      box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.1);
+    }
+    
+    .holographic-table tbody tr:nth-child(odd) {
+      background: rgba(15, 20, 40, 0.5);
+    }
+    
+    /* Cyber button */
+    .cyber-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--darker);
       border-radius: 8px;
-      padding: 6px 18px;
+      padding: 12px 24px;
+      font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      border: none;
       text-decoration: none;
-      box-shadow: 0 2px 8px #4fc3f73a;
-      transition: background 0.2s, color 0.2s;
-      margin-left: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 102, 255, 0.4);
     }
-    .contribute a:hover {
-      background: linear-gradient(90deg, #80ccff 0%, #4fc3f7 100%);
-      color: #232b36;
+    
+    .cyber-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent 45%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 55%
+      );
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
     }
-    /* Changelog Sidebar */
-    .changelog {
+    
+    .cyber-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 102, 255, 0.6);
+    }
+    
+    .cyber-button:hover::before {
+      animation: shine 1.5s;
+    }
+    
+    .cyber-button i {
+      font-size: 1.2rem;
+    }
+    
+    /* Game link button */
+    .game-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--primary);
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-family: 'Tomorrow', monospace;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .game-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 240, 255, 0.2),
+        transparent
+      );
+      transition: all 0.6s ease;
+    }
+    
+    .game-link:hover {
+      background: rgba(0, 240, 255, 0.2);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+    }
+    
+    .game-link:hover::before {
+      left: 100%;
+    }
+    
+    .game-link i {
+      font-size: 0.9rem;
+    }
+    
+    /* Cyber terminal sidebar */
+    .cyber-terminal {
       position: sticky;
       top: 40px;
       align-self: flex-start;
-      min-width: 320px;
-      max-width: 340px;
-      background: rgba(44,62,80,0.92);
-      border-radius: 18px;
-      box-shadow: 0 4px 32px #0004;
-      padding: 32px 24px 24px 24px;
-      margin-top: -120px;
-      z-index: 10;
-      border: 1.5px solid rgba(76,195,247,0.13);
-      backdrop-filter: blur(6px);
-      color: #e2e8f0;
-      font-size: 1.05rem;
-      transition: box-shadow 0.2s;
+      background: rgba(10, 15, 30, 0.8);
+      border-radius: 16px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-light);
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3), 
+                  inset 0 0 20px rgba(0, 240, 255, 0.1);
+      font-family: 'Tomorrow', monospace;
+      overflow: hidden;
     }
-    .changelog h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
-      color: #4fc3f7;
-      margin-top: 0;
-      margin-bottom: 1.1rem;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 12px #0005;
+    
+    .cyber-terminal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 240, 255, 0.03) 0%,
+        rgba(255, 0, 240, 0.03) 100%
+      );
+      pointer-events: none;
     }
-    .changelog ul {
-      padding-left: 1.2em;
-      margin: 0 0 0.7em 0;
-    }
-    .changelog li {
-      margin-bottom: 0.7em;
-      line-height: 1.5;
-    }
-    .changelog .date {
-      color: #80ccff;
-      font-size: 0.98em;
+    
+    .cyber-terminal h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
       font-weight: 700;
-      margin-right: 0.5em;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 0 10px var(--primary);
     }
-    @media (max-width: 1100px) {
-      .container { flex-direction: column; gap: 0; }
-      .changelog { position: static; margin: 32px 0 0 0; max-width: 100%; min-width: 0; }
+    
+    .cyber-terminal h3 i {
+      color: var(--secondary);
+      font-size: 1.6rem;
     }
-    @media (max-width: 700px) {
-      .container { padding: 0 4px; }
-      .main-content { margin-top: 0; }
-      .glass-card { padding: 18px 6px 18px 6px; }
-      .changelog { padding: 18px 8px 18px 8px; }
-      .hero h1 { font-size: 2.1rem; }
-      .hero p { font-size: 1.01rem; }
+    
+    .terminal-content {
+      position: relative;
     }
-    @media (max-width: 600px) {
-      table, thead, tbody, th, td, tr { display: block; }
-      thead { display: none; }
-      tr { margin-bottom: 1rem; }
-      td { padding: 0.7rem; border: none; border-bottom: 1px solid #333; position: relative; }
-      td:before { content: attr(data-label); font-weight: bold; display: block; margin-bottom: 0.3rem; color: #bbb; }
+    
+    .terminal-line {
+      display: flex;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 30px;
     }
+    
+    .terminal-line::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    .terminal-date {
+      color: var(--accent);
+      font-weight: 700;
+      min-width: 100px;
+      margin-right: 15px;
+    }
+    
+    .terminal-text {
+      color: var(--light);
+      flex: 1;
+    }
+    
+    .terminal-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 18px;
+      background: var(--primary);
+      margin-left: 5px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    /* Contribute section */
+    .contribute {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1.2rem;
+    }
+    
+    .contribute p {
+      margin-bottom: 1.5rem;
+      color: rgba(240, 240, 255, 0.8);
+    }
+    
+    /* Password manager button */
+    .password-manager {
+      position: fixed;
+      bottom: 40px;
+      left: 40px;
+      z-index: 100;
+      filter: drop-shadow(0 0 10px var(--primary));
+    }
+    
+    /* Responsive design */
+    @media (max-width: 1400px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      .cyber-terminal {
+        position: static;
+        order: -1;
+        margin-bottom: 40px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.3rem;
+      }
+      
+      .cyber-card {
+        padding: 30px;
+      }
+      
+      .holographic-table th, 
+      .holographic-table td {
+        padding: 14px 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 400px;
+        padding: 80px 20px 60px;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .password-manager {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+      }
+      
+      /* Stack table columns on mobile */
+      .holographic-table, 
+      .holographic-table thead, 
+      .holographic-table tbody, 
+      .holographic-table th, 
+      .holographic-table td, 
+      .holographic-table tr {
+        display: block;
+      }
+      
+      .holographic-table thead {
+        display: none;
+      }
+      
+      .holographic-table tr {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(15, 20, 40, 0.7) !important;
+      }
+      
+      .holographic-table td {
+        position: relative;
+        padding-left: 40%;
+        border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+      }
+      
+      .holographic-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 20px;
+        top: 16px;
+        font-weight: 600;
+        color: var(--primary);
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+      
+      .game-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    /* Terminal animation */
+    @keyframes terminalTyping {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    .typing-animation {
+      overflow: hidden;
+      white-space: nowrap;
+      animation: terminalTyping 3s steps(40, end);
+    }
+    
+    /* Particle generation */
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Random size
+        const size = Math.random() * 3 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random opacity
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        // Random animation duration
+        const duration = Math.random() * 20 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 20}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Initialize particles when DOM is loaded
+    document.addEventListener('DOMContentLoaded', createParticles);
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>Simple Games for School</h1>
-    <p>A collection of requested games for you to easily play on the school pcs. </p>
-  </div>
+  <div class="grid-overlay"></div>
+  <div class="particles"></div>
+  
+  <header class="hero">
+    <h1>NEXUS GAME PORTAL</h1>
+    <p>ACCESS PREMIUM GAMING EXPERIENCE ON SCHOOL SYSTEMS</p>
+  </header>
+  
   <div class="container">
-    <div class="main-content">
-      <div class="glass-card">
-        <h2>Games</h2>
-        <table>
+    <main>
+      <section class="cyber-card">
+        <h2><i class="fas fa-gamepad"></i> GAME LIBRARY</h2>
+        <table class="holographic-table">
           <thead>
             <tr>
-              <th>Source</th>
+              <th>Title</th>
               <th>Description</th>
-              <th>Link</th>
+              <th>Access</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label="Source">7zip</td>
-              <td data-label="Description">7zip increases extract speed by tenfold. Highly recommended to download and install</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
+              <td data-label="Title">7-ZIP</td>
+              <td data-label="Description">ULTRA-FAST FILE COMPRESSION TOOL</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
                   <input type="hidden" name="game" value="7zip">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/7zip/run_7zip_exe.ps
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_7ZIP.PS
                   </button>
                 </form>
               </td>
             </tr>
             <tr>
-              <td data-label="Source">Sims4</td>
-              <td data-label="Description">Unleash your imagination and create a unique world of Sims that's an expression of you! Explore and customize every detail from Sims to homes, and much more. A variety of Sims ar...</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
+              <td data-label="Title">SIMULACRA-4</td>
+              <td data-label="Description">LIFE SIMULATION WITH UNLIMITED CREATIVE POTENTIAL</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
                   <input type="hidden" name="game" value="sims4">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/sims4/run_sims4_exe.ps
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_SIMS4.PS
                   </button>
                 </form>
               </td>
             </tr>
             <tr>
-              <td data-label="Source">Deltarune</td>
-              <td data-label="Description">A linear, chapter-based system that you can pick up from anywhere. Creative bullet-dodging based battles inspired by games like Touhou and Chrono Trigger.</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
+              <td data-label="Title">DELTARUNE</td>
+              <td data-label="Description">BULLET-HELL RPG ADVENTURE</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
                   <input type="hidden" name="game" value="deltarune">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/deltarune/run_deltarune_exe.ps
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_DELTARUNE.PS
                   </button>
                 </form>
               </td>
             </tr>
             <tr>
-              <td data-label="Source">Madness Melee</td>
-              <td data-label="Description">Madness Melee is a 2D madness combat fangame. Enter the new Sleepwalker Program, and fight through 100 arena waves while upgrading your character the whole ...</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
+              <td data-label="Title">MADNESS MELEE</td>
+              <td data-label="Description">HIGH-OCTANE 2D COMBAT SIMULATOR</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
                   <input type="hidden" name="game" value="madness_melee">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/madness-melee/run_madness_melee_exe.ps
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_MADNESS.PS
                   </button>
                 </form>
               </td>
             </tr>
-            
           </tbody>
         </table>
+        
         <div class="contribute">
-          Want to contribute or add games yourself?
-          <a href="https://github.com/Codewood-Eastwood/Minecraft4School">Contribute on GitHub</a>
+          <p>WANT TO EXPAND THE LIBRARY?</p>
+          <a href="https://github.com/Codewood-Eastwood/Minecraft4School" class="cyber-button">
+            <i class="fab fa-github"></i> CONTRIBUTE CODE
+          </a>
+        </div>
+      </section>
+      
+      <section class="cyber-card">
+        <h2><i class="fas fa-crown"></i> PREMIUM ACCESS</h2>
+        <table class="holographic-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Title">HEARTS OF IRON IV</td>
+              <td data-label="Description">GRAND STRATEGY WW2 SIMULATION</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
+                  <input type="hidden" name="game" value="hoi4">
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_HOI4.PS
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Title">GTA IV</td>
+              <td data-label="Description">OPEN-WORLD ACTION ADVENTURE</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
+                  <input type="hidden" name="game" value="gta4">
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_GTA4.PS
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Title">RUST</td>
+              <td data-label="Description">HARDCORE SURVIVAL CHALLENGE</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
+                  <input type="hidden" name="game" value="rust">
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_RUST.PS
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Title">MINECRAFT</td>
+              <td data-label="Description">INFINITE SANDBOX UNIVERSE</td>
+              <td data-label="Access">
+                <form action="/get-script" method="post" class="inline-form">
+                  <input type="hidden" name="game" value="minecraft">
+                  <button type="submit" class="game-link">
+                    <i class="fas fa-download"></i> RUN_MINECRAFT.PS
+                  </button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    
+    <aside class="cyber-terminal">
+      <h3><i class="fas fa-terminal"></i> SYSTEM LOG</h3>
+      <div class="terminal-content">
+        <div class="terminal-line">
+          <span class="terminal-date">2025-07-10</span>
+          <span class="terminal-text">BACKEND OPTIMIZATION COMPLETE<span class="terminal-cursor"></span></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-date">2025-07-08</span>
+          <span class="terminal-text">NEON UI OVERHAUL DEPLOYED<span class="terminal-cursor"></span></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-date">2025-07-05</span>
+          <span class="terminal-text">ADDED 4 NEW PREMIUM TITLES<span class="terminal-cursor"></span></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-date">2025-07-02</span>
+          <span class="terminal-text">SECURITY PROTOCOLS UPDATED<span class="terminal-cursor"></span></span>
+        </div>
+        <div class="terminal-line">
+          <span class="terminal-date">2025-06-30</span>
+          <span class="terminal-text">INITIAL PORTAL ACTIVATION<span class="terminal-cursor"></span></span>
         </div>
       </div>
-      <div class="glass-card">
-        <h2>Premium</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Source</th>
-              <th>Description</th>
-              <th>Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Source">Hearts of Iron IV</td>
-              <td data-label="Description">The strategy game Hearts of Iron IV lets you take command of any nation in World War II; the most engaging conflict in world history...</td>
-                <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="hoi4">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/hoi4/run_hoi4_exe.ps
-                  </button>
-                </form>
-                </td>
-            </tr>
-            <tr>
-              <td data-label="Source">GTA4</td>
-              <td data-label="Description">Grand Theft Auto IV is a 2008 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the sixth main entry in the Grand ...</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="gta4">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/gta4/run_gta4_exe.ps
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="Source">Rust</td>
-              <td data-label="Description">The only aim in Rust is to survive. Everything wants you to die - the island's wildlife and other inhabitants, the environment, other survivors.</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="rust">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/rust/run_rust_exe.ps
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="Source">Steam (Work in progress)</td>
-              <td data-label="Description">Steam is a digital distribution service and storefront developed by Valve. It was launched as a software client in September 2003 to provide video game ...</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="steam">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/steam/run_steam_exe.ps
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td data-label="Source">Minecraft</td>
-              <td data-label="Description">Dive into an open world of building, crafting, and survival in Minecraft - the ultimate sandbox building simulation game. Gather resources, survive the ...</td>
-              <td data-label="Link">
-                <form action="/get-script" method="post" style="margin:0;">
-                  <input type="hidden" name="game" value="minecraft">
-                  <button type="submit" style="background:none;border:none;color:#4fc3f7;text-decoration:underline;cursor:pointer;padding:0;font:inherit;">
-                  /games/minecraft/run_minecraft_exe.ps
-                  </button>
-                </form>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      
+      <div style="margin-top: 2rem; text-align: center;">
+        <a href="https://github.com/Codewood-Eastwood/Minecraft4School" class="game-link">
+          <i class="fas fa-code-branch"></i> REQUEST FEATURES
+        </a>
       </div>
-    </div>
-    <aside class="changelog">
-      <h3>Changelog</h3>
-      <ul>
-        <li><span class="date">2025-07-05</span> Overhauled backend to allow for a shorter url, smaller and cleaner code, and FASTER DOWNLOAD SPEEDS (may vary from computer to computer)</li>
-        <li><span class="date">2025-07-02</span> Complete visual redesign: glassmorphism, gradients, hero section, sidebar changelog, elegant tables, and mobile-first responsive layout.</li>
-        <li><span class="date">2025-06-30</span> Added premium section, improved mobile experience, and enhanced color palette.</li>
-        <li><span class="date">2025-06-28</span> Added progress indicators and resume support to all download scripts.</li>
-        <li><span class="date">2025-06-25</span> Initial release of help page and game downloaders.</li>
-      </ul>
-      <div style="font-size:0.98em; color:#80ccff; margin-top:1.2em;">Want to see more features? <a href="https://github.com/Codewood-Eastwood/Minecraft4School" style="color:#4fc3f7;">Request on GitHub</a></div>
     </aside>
   </div>
-  <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
-    <a href="/passwords" style="
-      display: inline-block;
-      background: linear-gradient(90deg, #4fc3f7 0%, #80ccff 100%);
-      color: #1a202c;
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 2px 8px #4fc3f73a;
-      transition: background 0.2s, color 0.2s;">
-      Password Manager
+  
+  <div class="password-manager">
+    <a href="/passwords" class="cyber-button">
+      <i class="fas fa-key"></i> ACCESS CONTROL
     </a>
   </div>
+
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Random size
+        const size = Math.random() * 3 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random opacity
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        // Random animation duration
+        const duration = Math.random() * 20 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 20}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Initialize particles when DOM is loaded
+    document.addEventListener('DOMContentLoaded', createParticles);
+    
+    // Add typing animation to terminal lines
+    document.addEventListener('DOMContentLoaded', function() {
+      const terminalLines = document.querySelectorAll('.terminal-text');
+      terminalLines.forEach((line, index) => {
+        // Store original text
+        const originalText = line.textContent;
+        line.textContent = '';
+        
+        // Add typing animation with delay
+        setTimeout(() => {
+          line.style.animation = `terminalTyping ${2 + Math.random()}s steps(${originalText.length}, end)`;
+          line.textContent = originalText;
+        }, index * 500);
+      });
+    });
+  </script>
 </body>
 </html>
