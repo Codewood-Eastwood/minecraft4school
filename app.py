@@ -3,7 +3,7 @@
 
 
 import passwords
-from flask import Flask, send_file, render_template, make_response, request, Response, abort
+from flask import Flask, send_file, render_template, make_response, request, Response, abort, send_from_directory, safe_join, abort
 from local_logger import logger
 from datetime import datetime, timezone, timedelta
 import os; os.system('pip install psutil')
@@ -16,6 +16,7 @@ app = Flask(__name__)
 normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox")
 premium_games: tuple[str] = ()
 passwords_in_use: dict[str, int] = {}
+DOWNLOAD_FOLDER = '/shared/hosted'
 
 @app.before_request
 def require_client_id():
@@ -29,6 +30,13 @@ def require_client_id():
 def index():
     return render_template("login.html")
 
+@app.route('/download/<path:filename>')
+def download_file(filename):
+    # Make sure the file exists
+    file_path = safe_join(DOWNLOAD_FOLDER, filename)
+    if not os.path.isfile(file_path):
+        abort(404)
+    return send_from_directory(DOWNLOAD_FOLDER, filename, as_attachment=True)
 
 @app.route('/passwords')
 def password_manager(error=None):
