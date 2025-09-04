@@ -13,8 +13,8 @@ from host_details import host_details
 # flake8: noqa: E501
 app = Flask(__name__)
 
-normal_games: tuple[str] = ("7zip", "deltarune", "madness_melee", "sims4")
-premium_games: tuple[str] = ("hoi4", "minecraft", "rust", "gta4")
+normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox")
+premium_games: tuple[str] = ()
 passwords_in_use: dict[str, int] = {}
 
 @app.before_request
@@ -159,7 +159,7 @@ def get_script():
 1. Open <a href="/image-help" target="_blank">Windows Powershell</a><br>
 2. Paste the above code in when loaded<br>
 3. Press enter, if it isn't lagging then something will happen<br>
-4. For image help, click <a href="/image-help" target="_blank">here</a>
+4. For image help, you don't get any because i'm too lazy<br>
 """
                            )
     

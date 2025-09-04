@@ -4,11 +4,11 @@
 #>
 
 # URL of the file
-$url = "http://andrewbaker.ddns.net/7zip.exe"
+$url = "http://andrewbaker.ddns.net/solarsandbox.exe"
 
 # Path to the user's Downloads folder
 $downloads = [Environment]::GetFolderPath("UserProfile") + "\Downloads"
-$output = Join-Path $downloads "7zip.exe"
+$output = Join-Path $downloads "solarsandbox.exe"
 
 Write-Host "Starting download from $url ..."
 $startTime = Get-Date

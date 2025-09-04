@@ -1,3 +1,53 @@
-$url = "http://eastwoodfun.ddns.net:6767/deltarune.zip"; $out = Join-Path $env:USERPROFILE "Downloads\deltarune.zip"; $r = [System.Net.HttpWebRequest]::Create($url); $r.Method = "GET"; $res = $r.GetResponse(); $s = $res.GetResponseStream(); $fs = [System.IO.File]::Create($out); $buf = New-Object byte[] 8192; $read = 0; $readTotal = 0; $t0 = Get-Date; do { $read = $s.Read($buf, 0, $buf.Length); $fs.Write($buf, 0, $read); $readTotal += $read; $elapsed = (Get-Date) - $t0; $bps = if ($elapsed.TotalSeconds -gt 0) { $readTotal * 8 / $elapsed.TotalSeconds } else { 0 }; $mbps = [math]::Round($bps / 1MB, 2); $eta = if ($bps -gt 0) { [TimeSpan]::FromSeconds(($res.ContentLength * 8 - $readTotal * 8)/$bps) } else { [TimeSpan]::Zero }; $pct = [math]::Round(($readTotal / $res.ContentLength) * 100, 2); Write-Progress -Activity "Downloading ddlc.zip" -Status "$pct% — ETA: $($eta.ToString('hh\:mm\:ss')) — Speed: $mbps Mbps" -PercentComplete $pct } while ($read -gt 0);
-$fs.Close(); $s.Close(); $res.Close(); Write-Host "`n✅ Download complete!" -ForegroundColor Green; Write-Host "📂 Saved to: $out" -ForegroundColor Yellow
-# Done
+<#
+    Script to download a file from http://andrewbaker.ddns.net
+    Shows progress bar with percent and ETA
+#>
+
+# URL of the file
+$url = "http://andrewbaker.ddns.net/deltarune.zip"
+
+# Path to the user's Downloads folder
+$downloads = [Environment]::GetFolderPath("UserProfile") + "\Downloads"
+$output = Join-Path $downloads "deltarune.zip"
+
+Write-Host "Starting download from $url ..."
+$startTime = Get-Date
+
+# Create web client
+$response = Invoke-WebRequest -Uri $url -Method Head
+$totalBytes = [int64]$response.Headers["Content-Length"]
+
+# Open streams
+$req = [System.Net.HttpWebRequest]::Create($url)
+$res = $req.GetResponse()
+$stream = $res.GetResponseStream()
+$file = [System.IO.FileStream]::new($output, [System.IO.FileMode]::Create)
+
+# Buffer settings
+$buffer = New-Object byte[] (8192)
+$bytesRead = 0
+$downloadedBytes = 0
+
+while (($bytesRead = $stream.Read($buffer, 0, $buffer.Length)) -gt 0) {
+    $file.Write($buffer, 0, $bytesRead)
+    $downloadedBytes += $bytesRead
+
+    # Progress %
+    $percent = [math]::Round(($downloadedBytes / $totalBytes) * 100, 2)
+
+    # Speed + ETA
+    $elapsed = (Get-Date) - $startTime
+    $speed = if ($elapsed.TotalSeconds -gt 0) { $downloadedBytes / $elapsed.TotalSeconds } else { 0 }
+    $remaining = if ($speed -gt 0) { ($totalBytes - $downloadedBytes) / $speed } else { 0 }
+
+    Write-Progress -Activity "Downloading file" `
+                   -Status "$percent% complete | ETA: $([math]::Round($remaining))s" `
+                   -PercentComplete $percent
+}
+
+# Cleanup
+$file.Close()
+$stream.Close()
+$res.Close()
+
+Write-Host "Download complete: $output"
