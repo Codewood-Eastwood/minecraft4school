@@ -22,7 +22,9 @@ DOWNLOAD_FOLDER = '/shared/hosted'
 @app.before_request
 def require_client_id():
     logger.info(f"Request to {request.endpoint} from {request.remote_addr}")
-    if not request.cookies.get('password') and request.endpoint != "login":
+    if not request.cookies.get('password') and request.endpoint not in [
+        'login', 'download'
+    ]:
         return render_template('login.html')
 
     pass
