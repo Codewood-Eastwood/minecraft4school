@@ -258,4 +258,4 @@ def delete_password():
     return password_manager(error)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=15028, debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True)
