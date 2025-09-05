@@ -14,7 +14,7 @@ from werkzeug.utils import safe_join
 # flake8: noqa: E501
 app = Flask(__name__)
 
-normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox")
+normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox", "ultrakill")
 premium_games: tuple[str] = ()
 passwords_in_use: dict[str, int] = {}
 DOWNLOAD_FOLDER = '/shared/hosted'
