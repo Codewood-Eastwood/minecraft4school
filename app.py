@@ -19,6 +19,32 @@ premium_games: tuple[str] = ()
 passwords_in_use: dict[str, int] = {}
 DOWNLOAD_FOLDER = '/shared/hosted'
 
+banners = {
+    'shiftatmidnight': 'https://img.itch.zone/aW1nLzIxNzk3NDAyLnBuZw==/original/ZngxC1.png',
+    'brotato': 'https://www.somosxbox.com/wp-content/uploads/2024/01/brotato-e1706607636179.jpg',
+    'madness-melee': 'https://playgama.com/cdn-cgi/imagedelivery/LN2S-4p3-GgZvEx3IPaKUA/07c6430d-b51c-44d8-6d52-d94d69ba3900/enlarged',
+    'deltarune': 'https://img.itch.zone/aW1nLzY5ODQ0NTcucG5n/original/q7onYS.png',
+    'miside': 'https://img.itch.zone/aW1nLzEyNjM3OTY5LnBuZw==/original/R05Fdp.png',
+    '7zip': '',
+    'solarbox': '',
+    'ultrakill': '',
+    'forzahorizon2': '',
+    'granny': ''
+}
+
+screenshots = {
+    'shiftatmidnight': ['https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM4MC5wbmc=/347x500/3zlcWM.png', 'https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM3OC5wbmc=/347x500/BMi4tj.png', 'https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM4Ny5wbmc=/347x500/CXkCOR.png', 'https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM4My5wbmc=/347x500/G1ClGw.png'],
+    'brotato': ['https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_79be0eea0299da76bc50cef160fb669509f74e0b.600x338.jpg?t=1754906841', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_61ad3d242282311207828c1a7d87c1c9d7b4d8bf.600x338.jpg?t=1754906841', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_9d7d1532397e65d39a3b63e3b25bd3adf7a81b37.600x338.jpg?t=1754906841', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_8d4467bb3278d7f50bf457337bbe76d0053ebd83.600x338.jpg?t=1754906841'],
+    'madness-melee': ['https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1My5wbmc=/347x500/cya8yw.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1NC5wbmc=/347x500/xkRb97.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1NS5wbmc=/347x500/0jOyHX.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1Ni5wbmc=/347x500/lLMrht.png'],
+    'deltarune': ['https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDIwLnBuZw==/347x500/hxV8FS.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE5LnBuZw==/original/R%2BOobw.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE2LnBuZw==/347x500/s4Hn0N.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE3LnBuZw==/347x500/0xY9tq.png'],
+    'miside': ['https://img.itch.zone/aW1nLzEyNjM4MDkxLnBuZw==/original/FUX5gl.png', 'https://img.itch.zone/aW1nLzEyNjM4MDk5LnBuZw==/original/sv2y3V.png', 'https://img.itch.zone/aW1nLzEyNjM5ODc4LnBuZw==/original/v8zsxu.png', 'https://static.deltiasgaming.com/2024/12/ss_0052fb30551d9d7bb6e342ee47005f57856d0a16.1920x1080.jpg'],
+    '7zip': ['', '', '', ''],
+    'solarbox': ['', '', '', ''],
+    'ultrakill': ['', '', '', ''],
+    'forzahorizon2': ['', '', '', ''],
+    'granny': ['', '', '', '']
+}
+
 @app.before_request
 def require_client_id():
     logger.info(f"Request to {request.endpoint} from {request.remote_addr}")
@@ -166,6 +192,11 @@ def get_script():
                            filename=script_path,
                            script_content=script_content,
                            download_url=download_url,
+                           banner=banners[game],
+                           screenshot1=screenshots[game][0],
+                           screenshot2=screenshots[game][1],
+                           screenshot3=screenshots[game][2],
+                           screenshot4=screenshots[game][3],
                            instructions="""
 1. Open <a href="/image-help" target="_blank">Windows Powershell</a><br>
 2. Paste the above code in when loaded<br>
