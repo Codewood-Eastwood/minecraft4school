@@ -249,6 +249,49 @@
         margin-top: 40px;
       }
     }
+
+    .download-time {
+      font-size: 0.85rem;
+      margin-top: 6px;
+      color: rgba(240, 240, 255, 0.6);
+      font-family: 'Tomorrow', sans-serif;
+    }
+
+    .tooltip-container {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-left: 8px;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      width: 220px;
+      background-color: rgba(10, 15, 30, 0.95);
+      color: var(--light);
+      text-align: left;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.95rem;
+      position: absolute;
+      z-index: 10;
+      bottom: 125%; /* shows above the ? */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .tooltip-container:hover .tooltip-text,
+    .tooltip-container:focus .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
   </style>
 </head>
 <body>
@@ -262,7 +305,14 @@
 
   <div class="container">
     <main>
-      <h2 class="section-title" style="margin-top:60px;">Popular Games</h2>
+      <h2 class="section-title" style="margin-top:60px;">
+        Popular Games
+        <span class="tooltip-container">?
+          <span class="tooltip-text">
+            Estimated times with download speed of 15 MB/s
+          </span>
+        </span>
+      </h2>
       <div class="game-grid">
         <div class="game-card">
           <img src="https://img.itch.zone/aW1nLzIxNzk3Mzc0LnBuZw==/original/NufRDr.png" 
@@ -280,6 +330,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~69 seconds</div>
             </div>
           </div>
         </div>
@@ -300,6 +351,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~6m 41s</div>
             </div>
           </div>
         </div>
@@ -320,6 +372,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~20m 53s</div>
             </div>
           </div>
         </div>
@@ -340,6 +393,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~1 hour</div>
             </div>
           </div>
         </div>
@@ -360,13 +414,21 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~5m 56s</div>
             </div>
           </div>
         </div>
 
       </div>
 
-      <h2 class="section-title">Old Games</h2>
+      <h2 class="section-title" style="margin-top:60px;">
+        Old Games
+        <span class="tooltip-container">?
+          <span class="tooltip-text">
+            Estimated times with download speed of 15 MB/s
+          </span>
+        </span>
+      </h2>
       <div class="game-grid">
         <div class="game-card">
           <img src="https://img.itch.zone/aW1nLzEwMjY4NDM0LnBuZw==/315x250%23c/1L35qR.png" 
@@ -384,6 +446,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~67 seconds</div>
             </div>
           </div>
         </div>
@@ -404,6 +467,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~1m 17s</div>
             </div>
           </div>
         </div>
@@ -424,6 +488,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~2m 28s</div>
             </div>
           </div>
         </div>
@@ -435,15 +500,13 @@
 
           <div class="game-content">
             <h3 class="game-title">Minecraft</h3>
-            <p class="game-desc">Not available due to low demand</p>
+            <p class="game-desc">You know what Minecraft is</p>
 
             <div class="game-action">
-              <form action="/get-script" method="post" class="inline-form">
-                <input type="hidden" name="game" value="Minecraft">
-                <button type="submit" class="game-link" disabled style="opacity:0.5;cursor:not-allowed;">
-                  <i class="fas fa-download"></i> Download
-                </button>
-              </form>
+                <a href="/minecraft" class="game-link">
+                <i class="fas fa-download"></i> More
+                </a>
+                <div class="download-time">~17m 46s</div>
             </div>
           </div>
         </div>
@@ -464,6 +527,7 @@
                   <i class="fas fa-download"></i> Download
                 </button>
               </form>
+              <div class="download-time">~50 seconds</div>
             </div>
           </div>
         </div>
@@ -487,6 +551,7 @@
                 <i class="fas fa-download"></i> Download
               </button>
             </form>
+            <div class="download-time">~0.53 seconds</div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 # Created by Angadpal Tak
-# version 1.29.8
+# version 1.30.6
 
 
 import passwords
@@ -14,7 +14,7 @@ from werkzeug.utils import safe_join
 # flake8: noqa: E501
 app = Flask(__name__)
 
-normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox", "ultrakill", "forzahorizon2", "granny")
+normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox", "ultrakill", "forzahorizon2", "granny", "minecraft-1.16.5")
 premium_games: tuple[str] = ()
 passwords_in_use: dict[str, int] = {}
 DOWNLOAD_FOLDER = '/shared/hosted'
@@ -25,11 +25,12 @@ banners = {
     'madness-melee': 'https://playgama.com/cdn-cgi/imagedelivery/LN2S-4p3-GgZvEx3IPaKUA/07c6430d-b51c-44d8-6d52-d94d69ba3900/enlarged',
     'deltarune': 'https://img.itch.zone/aW1nLzY5ODQ0NTcucG5n/original/q7onYS.png',
     'miside': 'https://img.itch.zone/aW1nLzEyNjM3OTY5LnBuZw==/original/R05Fdp.png',
-    '7zip': '',
-    'solarbox': '',
-    'ultrakill': '',
-    'forzahorizon2': '',
-    'granny': ''
+    '7zip': 'https://www.pngkit.com/png/detail/184-1845225_7-zip-logo-png.png',
+    'solarsandbox': 'https://img.itch.zone/aW1nLzIwMTkyNDg0LnBuZw==/original/qke%2Fra.png',
+    'ultrakill': 'https://clan.cloudflare.steamstatic.com/images/36701673/1937ce680e0f9cbc25df87cc47786ae53ca96d79.png',
+    'forzahorizon2': 'https://th.bing.com/th/id/R.8a0143ef056604f0249efd15290551e7?rik=wtDw1dDL8eCq2A&riu=http%3a%2f%2fwww.familyfriendlygaming.com%2fImages%2f2014%2fPics%2fForza+Horizon+2%2fFH2-KeyArt-Horizontal-v2-RGB-jpg.jpg&ehk=uJ6HTMIoh36PrxDC14GS0XSWO5qkOy%2bq4hCnuscvj7E%3d&risl=1&pid=ImgRaw&r=0',
+    'granny': 'https://i.ytimg.com/vi/iPAh1uf61g0/maxresdefault.jpg',
+    'minecraft-1.16.5': 'https://minecraft-tutos.com/wp-content/uploads/2021/01/minecraft-1-16-5.jpg'
 }
 
 screenshots = {
@@ -38,11 +39,58 @@ screenshots = {
     'madness-melee': ['https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1My5wbmc=/347x500/cya8yw.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1NC5wbmc=/347x500/xkRb97.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1NS5wbmc=/347x500/0jOyHX.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1Ni5wbmc=/347x500/lLMrht.png'],
     'deltarune': ['https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDIwLnBuZw==/347x500/hxV8FS.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE5LnBuZw==/original/R%2BOobw.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE2LnBuZw==/347x500/s4Hn0N.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE3LnBuZw==/347x500/0xY9tq.png'],
     'miside': ['https://img.itch.zone/aW1nLzEyNjM4MDkxLnBuZw==/original/FUX5gl.png', 'https://img.itch.zone/aW1nLzEyNjM4MDk5LnBuZw==/original/sv2y3V.png', 'https://img.itch.zone/aW1nLzEyNjM5ODc4LnBuZw==/original/v8zsxu.png', 'https://static.deltiasgaming.com/2024/12/ss_0052fb30551d9d7bb6e342ee47005f57856d0a16.1920x1080.jpg'],
-    '7zip': ['', '', '', ''],
-    'solarbox': ['', '', '', ''],
-    'ultrakill': ['', '', '', ''],
-    'forzahorizon2': ['', '', '', ''],
-    'granny': ['', '', '', '']
+    '7zip': ['https://i.ytimg.com/vi/Ng43hSsApMY/maxresdefault.jpg', 'https://i.ytimg.com/vi/V1zICMxPfNs/maxresdefault.jpg', 'https://nerdschalk.com/content/images/wp-content/uploads/2022/10/7zip-win-11-5.png', 'https://athomecomputer.co.uk/wp-content/uploads/2023/01/7zip-Windows-11.png'],
+    'solarsandbox': ['https://img.itch.zone/aW1nLzIxMjk0NTQ4LmdpZg==/original/g789JN.gif', 'https://img.itch.zone/aW1nLzIxMjk0NDg3LmdpZg==/original/61JKDT.gif', 'https://img.itch.zone/aW1nLzIyNjI3NTkxLmdpZg==/original/rKxOhX.gif', 'https://img.itch.zone/aW1nLzIyNjI3Mzc1LnBuZw==/original/4yXUyx.png'],
+    'ultrakill': ['https://images.gog-statics.com/550f470ca2e97cdc7a6eb8848f8b63e78a4729a80b786856968e299f657aa9cd_product_card_v2_mobile_slider_639.jpg', 'https://images4.alphacoders.com/135/1350600.png', 'https://3dnews.ru/assets/external/illustrations/2024/01/18/1098939/ULTRAKILL_screenshot_onpage_2.jpg', 'https://i.playground.ru/i/screenshot/107435/ultrakill.jpg?1200x675'],
+    'forzahorizon2': ['https://gamefabrique.com/images/video/original/forza-horizon-2.mp4', 'https://gamefabrique.com/storage/screenshots/pc/forza-horizon-2-02.webp', 'https://gamefabrique.com/screenshots2/pc/forza-horizon-2-08.big.jpg', 'https://gamefabrique.com/screenshots2/pc/forza-horizon-2-04.big.jpg'],
+    'granny': ['https://cdn.cloudflare.steamstatic.com/steam/apps/2110820/ss_79f289f593de40cdb7d58c330c9fad2db5724ff5.1920x1080.jpg?t=1695852924', 'https://wallpapers.com/images/hd/granny-pictures-crnny099clfn963l.jpg', 'https://thvnext.bing.com/th/id/OIP.GMu5C9i9-bfofgyC3BCP5wHaEK?w=278&h=180&c=7&r=0&o=5&cb=ucfimg2&pid=1.7&ucfimg=1', 'https://imag.malavida.com/mvimgbig/download-fs/granny-20748-3.jpg'],
+    'minecraft-1.16.5': ['https://i.ytimg.com/vi/gouhmtcbKDM/maxresdefault.jpg','https://static.planetminecraft.com/files/image/minecraft/project/2021/511/14797291_l.webp','https://static.planetminecraft.com/files/image/minecraft/project/2021/511/14810628_l.jpg','https://uk.minecraft.wiki/images/thumb/1.16.5_(Java_Edition)_%D0%BC%D0%B5%D0%BD%D1%8E.png/640px-1.16.5_(Java_Edition)_%D0%BC%D0%B5%D0%BD%D1%8E.png?28ddc']
+}
+
+descriptions = {
+    'shiftatmidnight': """CATCH THE DOPPELGANGERS IN THIS 3D HORROR.
+Demo Playthrough:   ~40 mins
+•    Serve customers, spot the Doppelgangers. 
+•    Question them, check their Paperwork. 
+•    Board up, lay Traps and Hide.""",
+    'brotato': """Brotato is a top-down arena shooter roguelite where you play a potato wielding up to 6 weapons at a time to fight off hordes of aliens. Choose from a variety of traits and items to create unique builds and survive until help arrives.""",
+    'madness-melee': """Madness Melee is a 2D madness combat fangame.
+
+Enter the new Sleepwalker Program, and fight through 100 arena waves while upgrading your character the whole way through! Unlock new characters to beat the arena with, after completing the game.""",
+    'deltarune': """Dive into the parallel story to UNDERTALE! Fight or spare your way through action-packed battles as you explore a mysterious world alongside an endearing cast of new and familiar characters. Chapters 1-4 will be available at launch, with more planned as free updates!
+
+A massive soundtrack and story written by Toby Fox!
+Meet new and endearing main characters, as well as familiar faces like Toriel, Sans, and more. Huh? Papyrus? No, he's busy. Sorry
+Smooth and expressive pixel-animation by Temmie. She also has a new hat (in-game)
+A linear, chapter-based system that you can pick up from anywhere.\
+Creative bullet-dodging based battles inspired by games like the Touhou series and Chrono Trigger.
+Jevilishly difficult hidden bosses.
+And...
+...
+... only 1 ending...?""",
+    'miside': """Let's imagine that you have a game in which you care for a character. But could you imagine one day getting into that game yourself?\n
+The developers describe the content like this:
+
+- In the settings there is an option to enable censorship.
+- The game contains murder scenes, also present: blood, corpses, dismemberment.""",
+    '7zip': 'Fast processing for .zip, .tar, .7zip, etc.. files',
+    'solarsandbox': """Solar Sandbox is a game where you can interact with physics in space.""",
+    'ultrakill': "ULTRAKILL is a fast-paced ultraviolent retro FPS combining the skill-based style scoring from character action games with unadulterated carnage inspired by the best shooters of the '90s. Rip apart your foes with varied destructive weapons and shower in their blood to regain your health.",
+    'forzahorizon2': "Forza Horizon 2 is a racing video game, featuring an open world environment.[2] The player participates in the Horizon Festival, a fictional racing competition set within Southern France and Northern Italy.[3] The game has approximately three times more drivable area than that of its predecessor Forza Horizon, with events set in Provence, Liguria and Côte d'Azur (Nice) along with scaled down towns of Sisteron and Saint-Martin-du-Var. ",
+    'granny': """Welcome to Granny. Granny keeps you locked in her house right now. You wake up in a dark room, the only thing that lights up the room is your flashlight lying on a table, you have a headache and it feels like someone has hit you in the head. As a result, you must make your way out of her home, but you must be cautious and remain silent. She hears everything. If you drop anything on the floor, she will hear it and hurry up to you. You may conceal yourselves in closets or beneath beds, but you must be cautious that she does not discover where you are hide yourself.""",
+    'minecraft-1.16.5': """Minecraft 1.16, known as the Nether Update, was released on June 23, 2020. It overhauled the Nether dimension, introducing new biomes, mobs, and materials to enhance gameplay.
+
+Key Features:
+
+New Biomes: The Nether now includes the Crimson Forest, Warped Forest, Soul Sand Valley, and Basalt Deltas, each with unique terrain and resources.
+
+New Mobs: Introduced Piglins, Hoglins, Zoglins, and Striders, adding depth to Nether encounters.
+
+Netherite: A new material stronger than diamond, crafted from ancient debris found in the Nether, offering enhanced durability for tools and armor.
+
+Crying Obsidian & Respawn Anchor: Crying Obsidian can be used to craft Respawn Anchors, allowing players to set spawn points in the Nether.
+
+New Blocks & Structures: Added blocks like Blackstone and structures such as Bastion Remnants and Ruined Portals, enriching exploration and building options."""
 }
 
 @app.before_request
@@ -58,6 +106,10 @@ def require_client_id():
 @app.route('/')
 def index():
     return render_template("login.html")
+
+@app.route('/minecraft')
+def minecraft():
+    return render_template("minecraft.html")
 
 @app.route('/download/<path:filename>')
 def download_file(filename):
@@ -193,16 +245,11 @@ def get_script():
                            script_content=script_content,
                            download_url=download_url,
                            banner=banners[game],
+                           description=descriptions[game],
                            screenshot1=screenshots[game][0],
                            screenshot2=screenshots[game][1],
                            screenshot3=screenshots[game][2],
-                           screenshot4=screenshots[game][3],
-                           instructions="""
-1. Open <a href="/image-help" target="_blank">Windows Powershell</a><br>
-2. Paste the above code in when loaded<br>
-3. Press enter, if it isn't lagging then something will happen<br>
-4. For image help, you don't get any because i'm too lazy<br>
-"""
+                           screenshot4=screenshots[game][3]
                            )
     
 
