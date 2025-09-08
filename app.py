@@ -14,7 +14,7 @@ from werkzeug.utils import safe_join
 # flake8: noqa: E501
 app = Flask(__name__)
 
-normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox", "ultrakill", "forzahorizon2", "granny", "minecraft-1.16.5")
+normal_games: tuple[str] = ("shiftatmidnight", "brotato", "madness-melee", "deltarune", "miside", "7zip", "solarsandbox", "ultrakill", "forzahorizon2", "granny", "minecraft-1.16.5", "app")
 premium_games: tuple[str] = ()
 passwords_in_use: dict[str, int] = {}
 DOWNLOAD_FOLDER = '/shared/hosted'
@@ -30,7 +30,8 @@ banners = {
     'ultrakill': 'https://clan.cloudflare.steamstatic.com/images/36701673/1937ce680e0f9cbc25df87cc47786ae53ca96d79.png',
     'forzahorizon2': 'https://th.bing.com/th/id/R.8a0143ef056604f0249efd15290551e7?rik=wtDw1dDL8eCq2A&riu=http%3a%2f%2fwww.familyfriendlygaming.com%2fImages%2f2014%2fPics%2fForza+Horizon+2%2fFH2-KeyArt-Horizontal-v2-RGB-jpg.jpg&ehk=uJ6HTMIoh36PrxDC14GS0XSWO5qkOy%2bq4hCnuscvj7E%3d&risl=1&pid=ImgRaw&r=0',
     'granny': 'https://i.ytimg.com/vi/iPAh1uf61g0/maxresdefault.jpg',
-    'minecraft-1.16.5': 'https://minecraft-tutos.com/wp-content/uploads/2021/01/minecraft-1-16-5.jpg'
+    'minecraft-1.16.5': 'https://minecraft-tutos.com/wp-content/uploads/2021/01/minecraft-1-16-5.jpg',
+    'app': ''
 }
 
 screenshots = {
@@ -44,7 +45,8 @@ screenshots = {
     'ultrakill': ['https://images.gog-statics.com/550f470ca2e97cdc7a6eb8848f8b63e78a4729a80b786856968e299f657aa9cd_product_card_v2_mobile_slider_639.jpg', 'https://images4.alphacoders.com/135/1350600.png', 'https://3dnews.ru/assets/external/illustrations/2024/01/18/1098939/ULTRAKILL_screenshot_onpage_2.jpg', 'https://i.playground.ru/i/screenshot/107435/ultrakill.jpg?1200x675'],
     'forzahorizon2': ['https://gamefabrique.com/images/video/original/forza-horizon-2.mp4', 'https://gamefabrique.com/storage/screenshots/pc/forza-horizon-2-02.webp', 'https://gamefabrique.com/screenshots2/pc/forza-horizon-2-08.big.jpg', 'https://gamefabrique.com/screenshots2/pc/forza-horizon-2-04.big.jpg'],
     'granny': ['https://cdn.cloudflare.steamstatic.com/steam/apps/2110820/ss_79f289f593de40cdb7d58c330c9fad2db5724ff5.1920x1080.jpg?t=1695852924', 'https://wallpapers.com/images/hd/granny-pictures-crnny099clfn963l.jpg', 'https://thvnext.bing.com/th/id/OIP.GMu5C9i9-bfofgyC3BCP5wHaEK?w=278&h=180&c=7&r=0&o=5&cb=ucfimg2&pid=1.7&ucfimg=1', 'https://imag.malavida.com/mvimgbig/download-fs/granny-20748-3.jpg'],
-    'minecraft-1.16.5': ['https://i.ytimg.com/vi/gouhmtcbKDM/maxresdefault.jpg','https://static.planetminecraft.com/files/image/minecraft/project/2021/511/14797291_l.webp','https://static.planetminecraft.com/files/image/minecraft/project/2021/511/14810628_l.jpg','https://uk.minecraft.wiki/images/thumb/1.16.5_(Java_Edition)_%D0%BC%D0%B5%D0%BD%D1%8E.png/640px-1.16.5_(Java_Edition)_%D0%BC%D0%B5%D0%BD%D1%8E.png?28ddc']
+    'minecraft-1.16.5': ['https://i.ytimg.com/vi/gouhmtcbKDM/maxresdefault.jpg','https://static.planetminecraft.com/files/image/minecraft/project/2021/511/14797291_l.webp','https://static.planetminecraft.com/files/image/minecraft/project/2021/511/14810628_l.jpg','https://uk.minecraft.wiki/images/thumb/1.16.5_(Java_Edition)_%D0%BC%D0%B5%D0%BD%D1%8E.png/640px-1.16.5_(Java_Edition)_%D0%BC%D0%B5%D0%BD%D1%8E.png?28ddc'],
+    'app': ['','','','']
 }
 
 descriptions = {
@@ -90,7 +92,8 @@ Netherite: A new material stronger than diamond, crafted from ancient debris fou
 
 Crying Obsidian & Respawn Anchor: Crying Obsidian can be used to craft Respawn Anchors, allowing players to set spawn points in the Nether.
 
-New Blocks & Structures: Added blocks like Blackstone and structures such as Bastion Remnants and Ruined Portals, enriching exploration and building options."""
+New Blocks & Structures: Added blocks like Blackstone and structures such as Bastion Remnants and Ruined Portals, enriching exploration and building options.""",
+    'app': 'App to make downloading games as easy as possible'
 }
 
 @app.before_request
