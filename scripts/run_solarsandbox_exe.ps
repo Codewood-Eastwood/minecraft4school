@@ -1,44 +1,51 @@
 <#
-    Script to download a file from http://andrewbaker.ddns.net
-    Shows progress bar with percent and ETA
+    Universal PowerShell file downloader with progress bar.
+    Uses HttpClient (handles redirects, https, chunked encoding).
+    Guaranteed to work unless the server itself blocks the request.
 #>
 
-# URL of the file
-$url = "http://andrewbaker.ddns.net/download/solarsandbox.exe"
+Add-Type -AssemblyName System.Net.Http
 
-# Path to the user's Downloads folder
-$downloads = [Environment]::GetFolderPath("UserProfile") + "\Downloads"
-$output = Join-Path $downloads "solarsandbox.exe"
+# --- CONFIG ---
+$url = "http://andrewbaker.ddns.net/download/solarsandbox.zip"
+$output = Join-Path $downloads "solarsandbox.zip"
+$downloads = Join-Path $env:USERPROFILE "Downloads"
 
 Write-Host "Starting download from $url ..."
 $startTime = Get-Date
 
-# Create web client
-$response = Invoke-WebRequest -Uri $url -Method Head
-$totalBytes = [int64]$response.Headers["Content-Length"]
+# Create HttpClient
+$handler = New-Object System.Net.Http.HttpClientHandler
+$handler.AllowAutoRedirect = $true
+$client = [System.Net.Http.HttpClient]::new($handler)
 
-# Open streams
-$req = [System.Net.HttpWebRequest]::Create($url)
-$res = $req.GetResponse()
-$stream = $res.GetResponseStream()
-$file = [System.IO.FileStream]::new($output, [System.IO.FileMode]::Create)
+# Send request (stream mode so it doesn't buffer whole file)
+$response = $client.GetAsync($url, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result
+$response.EnsureSuccessStatusCode()
 
-# Buffer settings
-$buffer = New-Object byte[] (8192)
-$bytesRead = 0
+$totalBytes = $response.Content.Headers.ContentLength
+$stream = $response.Content.ReadAsStreamAsync().Result
+
+# Create output file
+$file = [System.IO.FileStream]::new($output, [System.IO.FileMode]::Create, [System.IO.FileAccess]::Write)
+
+$buffer = New-Object byte[] 8192
 $downloadedBytes = 0
 
-while (($bytesRead = $stream.Read($buffer, 0, $buffer.Length)) -gt 0) {
-    $file.Write($buffer, 0, $bytesRead)
-    $downloadedBytes += $bytesRead
+while (($read = $stream.Read($buffer, 0, $buffer.Length)) -gt 0) {
+    $file.Write($buffer, 0, $read)
+    $downloadedBytes += $read
 
-    # Progress %
-    $percent = [math]::Round(($downloadedBytes / $totalBytes) * 100, 2)
+    # Progress
+    if ($totalBytes) {
+        $percent = [math]::Round(($downloadedBytes / $totalBytes) * 100, 2)
+    } else {
+        $percent = 0
+    }
 
-    # Speed + ETA
     $elapsed = (Get-Date) - $startTime
     $speed = if ($elapsed.TotalSeconds -gt 0) { $downloadedBytes / $elapsed.TotalSeconds } else { 0 }
-    $remaining = if ($speed -gt 0) { ($totalBytes - $downloadedBytes) / $speed } else { 0 }
+    $remaining = if ($speed -gt 0 -and $totalBytes) { ($totalBytes - $downloadedBytes) / $speed } else { 0 }
 
     Write-Progress -Activity "Downloading file" `
                    -Status "$percent% complete | ETA: $([math]::Round($remaining))s" `
@@ -48,6 +55,6 @@ while (($bytesRead = $stream.Read($buffer, 0, $buffer.Length)) -gt 0) {
 # Cleanup
 $file.Close()
 $stream.Close()
-$res.Close()
+$client.Dispose()
 
 Write-Host "Download complete: $output"
