@@ -6,7 +6,6 @@ import passwords
 from flask import Flask, send_file, render_template, make_response, request, Response, abort, send_from_directory, abort
 from local_logger import logger
 from datetime import datetime, timezone, timedelta
-import os; os.system('pip install psutil')
 import re
 from host_details import host_details
 from werkzeug.utils import safe_join
