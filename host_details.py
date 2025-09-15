@@ -46,7 +46,6 @@ def safe_get(key, func):
     # Try to get from cache first
     if key in cached_data:
         host_details[key] = cached_data[key]
-        print(f"Loaded {key} from cache")
         return
     
     # If not in cache or cache miss, get fresh data
