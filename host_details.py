@@ -51,7 +51,6 @@ def safe_get(key, func):
     # If not in cache or cache miss, get fresh data
     try:
         host_details[key] = func()
-        print(f"Loaded {key} (fresh)")
     except Exception as e:
         host_details[key] = f"Error: {e}"
         print(f"Failed to load {key}")
