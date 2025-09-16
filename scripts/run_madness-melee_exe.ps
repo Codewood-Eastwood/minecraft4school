@@ -1,60 +1,66 @@
 <#
-    Universal PowerShell file downloader with progress bar.
-    Uses HttpClient (handles redirects, https, chunked encoding).
-    Guaranteed to work unless the server itself blocks the request.
+    Universal PowerShell downloader with progress bar.
+    Uses HttpClient (supports redirects, https, chunked encoding).
 #>
 
 Add-Type -AssemblyName System.Net.Http
 
 # --- CONFIG ---
 $url = "http://andrewbaker.ddns.net/download/madness-melee.zip"
-$output = Join-Path $downloads "madness-melee.zip"
 $downloads = Join-Path $env:USERPROFILE "Downloads"
+$output = Join-Path $downloads "madness-melee.zip"
 
-Write-Host "Starting download from $url ..."
+Write-Host "Downloading from $url ..."
 $startTime = Get-Date
 
-# Create HttpClient
+# HttpClient
 $handler = New-Object System.Net.Http.HttpClientHandler
 $handler.AllowAutoRedirect = $true
 $client = [System.Net.Http.HttpClient]::new($handler)
 
-# Send request (stream mode so it doesn't buffer whole file)
-$response = $client.GetAsync($url, [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead).Result
+# Request headers first (streaming mode)
+$response = $client.GetAsync(
+    $url,
+    [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead
+).Result
 $response.EnsureSuccessStatusCode()
 
 $totalBytes = $response.Content.Headers.ContentLength
-$stream = $response.Content.ReadAsStreamAsync().Result
+$stream     = $response.Content.ReadAsStreamAsync().Result
+$file       = [System.IO.FileStream]::new(
+    $output,
+    [System.IO.FileMode]::Create,
+    [System.IO.FileAccess]::Write
+)
 
-# Create output file
-$file = [System.IO.FileStream]::new($output, [System.IO.FileMode]::Create, [System.IO.FileAccess]::Write)
-
-$buffer = New-Object byte[] 8192
-$downloadedBytes = 0
+$buffer         = New-Object byte[] 8192
+$downloaded     = 0
 
 while (($read = $stream.Read($buffer, 0, $buffer.Length)) -gt 0) {
     $file.Write($buffer, 0, $read)
-    $downloadedBytes += $read
+    $downloaded += $read
 
-    # Progress
     if ($totalBytes) {
-        $percent = [math]::Round(($downloadedBytes / $totalBytes) * 100, 2)
+        $percent = [math]::Round(($downloaded / $totalBytes) * 100, 2)
     } else {
         $percent = 0
     }
 
-    $elapsed = (Get-Date) - $startTime
-    $speed = if ($elapsed.TotalSeconds -gt 0) { $downloadedBytes / $elapsed.TotalSeconds } else { 0 }
-    $remaining = if ($speed -gt 0 -and $totalBytes) { ($totalBytes - $downloadedBytes) / $speed } else { 0 }
+    $elapsed   = (Get-Date) - $startTime
+    $speed     = if ($elapsed.TotalSeconds -gt 0) {
+        $downloaded / $elapsed.TotalSeconds
+    } else { 0 }
+    $remaining = if ($speed -gt 0 -and $totalBytes) {
+        ($totalBytes - $downloaded) / $speed
+    } else { 0 }
 
     Write-Progress -Activity "Downloading file" `
-                   -Status "$percent% complete | ETA: $([math]::Round($remaining))s" `
+                   -Status "$percent% | ETA: $([math]::Round($remaining))s" `
                    -PercentComplete $percent
 }
 
-# Cleanup
 $file.Close()
 $stream.Close()
 $client.Dispose()
 
-Write-Host "Download complete: $output"
+Write-Host "✅ Download complete: $output"
