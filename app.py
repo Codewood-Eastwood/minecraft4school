@@ -99,10 +99,9 @@ New Blocks & Structures: Added blocks like Blackstone and structures such as Bas
 @app.before_request
 def require_client_id():
     logger.info(f"Request to {request.endpoint} from {request.remote_addr}")
-    if not request.cookies.get('password') and request.endpoint not in [
-        'login', 'download'
-    ]:
-        return render_template('login.html')
+    if not request.cookies.get('password'):
+        if request.endpoint not in ['login'] and not request.path.startswith('/download/'):
+            return render_template('login.html')
 
     pass
 
