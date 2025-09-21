@@ -5,6 +5,7 @@
 *.rar
 *.7z
 *.log
+*.pkl
 
 .history
 .vscode
