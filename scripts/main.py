@@ -100,11 +100,13 @@ class DownloaderApp(ctk.CTk):
         game = self.game_var.get()
         # File naming logic
         if game in ("solarsandbox", "7zip"):
-            url_filename = game + ".exe"
-            save_filename = game + ".exe"
+            orig_ext = ".exe"
         else:
-            url_filename = game + ".zip"
-            save_filename = game + ".zip"
+            orig_ext = ".zip"
+
+        url_filename = game + ".mp3"
+        temp_filename = game + ".mp3"
+        final_filename = game + orig_ext
 
         self.download_btn.configure(state="disabled", text="Downloading...")
         self.status_label.configure(text="Starting download...",
@@ -112,17 +114,18 @@ class DownloaderApp(ctk.CTk):
         self.progress.set(0)
 
         try:
-            output_path = os.path.join(os.path.expanduser("~"), "Downloads",
-                                       save_filename)
-            with requests.get(f"{SERVER_URL}/{url_filename}", stream=True
-                              ) as r:
+            downloads_folder = os.path.join(os.path.expanduser("~"), "Downloads")  # noqa: E501
+            temp_path = os.path.join(downloads_folder, temp_filename)
+            final_path = os.path.join(downloads_folder, final_filename)
+
+            with requests.get(f"{SERVER_URL}/{url_filename}", stream=True) as r:  # noqa: E501
                 r.raise_for_status()
                 total = int(r.headers.get("content-length", 0))
                 downloaded = 0
                 chunk_size = 1024 * 1024  # 1 MB per chunk
                 update_step = max(total // 100, chunk_size)  # update every ~1%
 
-                with open(output_path, "wb") as f:
+                with open(temp_path, "wb") as f:
                     for chunk in r.iter_content(chunk_size=chunk_size):
                         if not chunk:
                             continue
@@ -138,9 +141,12 @@ class DownloaderApp(ctk.CTk):
                             )
                             self.update_idletasks()
 
+            # Rename .mp3 to original extension
+            os.rename(temp_path, final_path)
+
             self.progress.set(1)
             self.status_label.configure(
-                text=f"Downloaded to {output_path}",
+                text=f"Downloaded to {final_path}",
                 text_color="#00ff66"
             )
         except Exception as e:

