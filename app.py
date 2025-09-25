@@ -20,25 +20,25 @@ passwords_in_use: dict[str, int] = {}
 DOWNLOAD_FOLDER = '/shared/hosted'
 
 banners = {
-    'shiftatmidnight': 'https://img.itch.zone/aW1nLzIxNzk3NDAyLnBuZw==/original/ZngxC1.png',
-    'brotato': 'https://www.somosxbox.com/wp-content/uploads/2024/01/brotato-e1706607636179.jpg',
-    'madness-melee': 'https://playgama.com/cdn-cgi/imagedelivery/LN2S-4p3-GgZvEx3IPaKUA/07c6430d-b51c-44d8-6d52-d94d69ba3900/enlarged',
-    'deltarune': 'https://img.itch.zone/aW1nLzY5ODQ0NTcucG5n/original/q7onYS.png',
-    'miside': 'https://img.itch.zone/aW1nLzEyNjM3OTY5LnBuZw==/original/R05Fdp.png',
-    '7zip': 'https://www.pngkit.com/png/detail/184-1845225_7-zip-logo-png.png',
-    'solarsandbox': 'https://img.itch.zone/aW1nLzIwMTkyNDg0LnBuZw==/original/qke%2Fra.png',
-    'ultrakill': 'https://clan.cloudflare.steamstatic.com/images/36701673/1937ce680e0f9cbc25df87cc47786ae53ca96d79.png',
-    'forzahorizon2': 'https://th.bing.com/th/id/R.8a0143ef056604f0249efd15290551e7?rik=wtDw1dDL8eCq2A&riu=http%3a%2f%2fwww.familyfriendlygaming.com%2fImages%2f2014%2fPics%2fForza+Horizon+2%2fFH2-KeyArt-Horizontal-v2-RGB-jpg.jpg&ehk=uJ6HTMIoh36PrxDC14GS0XSWO5qkOy%2bq4hCnuscvj7E%3d&risl=1&pid=ImgRaw&r=0',
-    'granny': 'https://i.ytimg.com/vi/iPAh1uf61g0/maxresdefault.jpg',
-    'minecraft-1.16.5': 'https://minecraft-tutos.com/wp-content/uploads/2021/01/minecraft-1-16-5.jpg',
-    'app': ''
+    'shiftatmidnight': 'static/banners/shiftatmidnight.png',
+    'brotato': 'static/banners/brotato.jpg',
+    'madness-melee': 'static/banners/madness-melee.avif',
+    'deltarune': 'static/banners/deltarune.png',
+    'miside': 'static/banners/miside.png',
+    '7zip': 'static/banners/7zip.png',
+    'solarsandbox': 'static/banners/solarsandbox.png',
+    'ultrakill': 'static/banners/ultrakill.jpg',
+    'forzahorizon2': 'static/banners/forzahorizon.jpeg',
+    'granny': 'static/banners/granny.jpg',
+    'minecraft-1.16.5': 'static/banners/minecraft-1.16.5.jpg',
+    'app': 'static/images/app.png'
 }
 
 screenshots = {
     'shiftatmidnight': ['https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM4MC5wbmc=/347x500/3zlcWM.png', 'https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM3OC5wbmc=/347x500/BMi4tj.png', 'https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM4Ny5wbmc=/347x500/CXkCOR.png', 'https://img.itch.zone/aW1hZ2UvMzY2MzAwOC8yMTc5NzM4My5wbmc=/347x500/G1ClGw.png'],
     'brotato': ['https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_79be0eea0299da76bc50cef160fb669509f74e0b.600x338.jpg?t=1754906841', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_61ad3d242282311207828c1a7d87c1c9d7b4d8bf.600x338.jpg?t=1754906841', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_9d7d1532397e65d39a3b63e3b25bd3adf7a81b37.600x338.jpg?t=1754906841', 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1942280/ss_8d4467bb3278d7f50bf457337bbe76d0053ebd83.600x338.jpg?t=1754906841'],
     'madness-melee': ['https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1My5wbmc=/347x500/cya8yw.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1NC5wbmc=/347x500/xkRb97.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1NS5wbmc=/347x500/0jOyHX.png', 'https://img.itch.zone/aW1hZ2UvMTc0NTE2Ny8xMDI2ODQ1Ni5wbmc=/347x500/lLMrht.png'],
-    'deltarune': ['https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDIwLnBuZw==/347x500/hxV8FS.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE5LnBuZw==/original/R%2BOobw.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE2LnBuZw==/347x500/s4Hn0N.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE3LnBuZw==/347x500/0xY9tq.png'],
+    'deltarune': ['https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDIwLnBuZw==/347x500/hxV8FS.png', 'https://img.itch.z  ne/aW1hZ2UvMTE5MzgyOC82OTg0NDE5LnBuZw==/original/R%2BOobw.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE2LnBuZw==/347x500/s4Hn0N.png', 'https://img.itch.zone/aW1hZ2UvMTE5MzgyOC82OTg0NDE3LnBuZw==/347x500/0xY9tq.png'],
     'miside': ['https://img.itch.zone/aW1nLzEyNjM4MDkxLnBuZw==/original/FUX5gl.png', 'https://img.itch.zone/aW1nLzEyNjM4MDk5LnBuZw==/original/sv2y3V.png', 'https://img.itch.zone/aW1nLzEyNjM5ODc4LnBuZw==/original/v8zsxu.png', 'https://static.deltiasgaming.com/2024/12/ss_0052fb30551d9d7bb6e342ee47005f57856d0a16.1920x1080.jpg'],
     '7zip': ['https://i.ytimg.com/vi/Ng43hSsApMY/maxresdefault.jpg', 'https://i.ytimg.com/vi/V1zICMxPfNs/maxresdefault.jpg', 'https://nerdschalk.com/content/images/wp-content/uploads/2022/10/7zip-win-11-5.png', 'https://athomecomputer.co.uk/wp-content/uploads/2023/01/7zip-Windows-11.png'],
     'solarsandbox': ['https://img.itch.zone/aW1nLzIxMjk0NTQ4LmdpZg==/original/g789JN.gif', 'https://img.itch.zone/aW1nLzIxMjk0NDg3LmdpZg==/original/61JKDT.gif', 'https://img.itch.zone/aW1nLzIyNjI3NTkxLmdpZg==/original/rKxOhX.gif', 'https://img.itch.zone/aW1nLzIyNjI3Mzc1LnBuZw==/original/4yXUyx.png'],
@@ -338,6 +338,10 @@ def delete_password():
         except Exception as e:
             error = str(e)
     return password_manager(error)
+
+@app.route('/static/<path:filename>')
+def get_static_image(filename):
+    return send_from_directory('static', filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=6767, debug=True)
