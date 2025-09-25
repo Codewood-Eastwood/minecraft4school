@@ -1,66 +1,13 @@
-<#
-    Universal PowerShell downloader with progress bar.
-    Uses HttpClient (supports redirects, https, chunked encoding).
-#>
+# Define the URL of the file
+$url = "http://andrewbaker.ddns.net/download/miside.mp3"
 
-Add-Type -AssemblyName System.Net.Http
+# Get the current user's Downloads folder path
+$downloads = [Environment]::GetFolderPath("UserProfile") + "\Downloads"
 
-# --- CONFIG ---
-$url = "http://andrewbaker.ddns.net/download/miside.zip"
-$downloads = Join-Path $env:USERPROFILE "Downloads"
-$output = Join-Path $downloads "miside.zip"
+# Define the output file path
+$output = Join-Path $downloads "brotato.mp3"
 
-Write-Host "Downloading from $url ..."
-$startTime = Get-Date
+# Download the file
+Invoke-WebRequest -Uri $url -OutFile $output
 
-# HttpClient
-$handler = New-Object System.Net.Http.HttpClientHandler
-$handler.AllowAutoRedirect = $true
-$client = [System.Net.Http.HttpClient]::new($handler)
-
-# Request headers first (streaming mode)
-$response = $client.GetAsync(
-    $url,
-    [System.Net.Http.HttpCompletionOption]::ResponseHeadersRead
-).Result
-$response.EnsureSuccessStatusCode()
-
-$totalBytes = $response.Content.Headers.ContentLength
-$stream     = $response.Content.ReadAsStreamAsync().Result
-$file       = [System.IO.FileStream]::new(
-    $output,
-    [System.IO.FileMode]::Create,
-    [System.IO.FileAccess]::Write
-)
-
-$buffer         = New-Object byte[] 8192
-$downloaded     = 0
-
-while (($read = $stream.Read($buffer, 0, $buffer.Length)) -gt 0) {
-    $file.Write($buffer, 0, $read)
-    $downloaded += $read
-
-    if ($totalBytes) {
-        $percent = [math]::Round(($downloaded / $totalBytes) * 100, 2)
-    } else {
-        $percent = 0
-    }
-
-    $elapsed   = (Get-Date) - $startTime
-    $speed     = if ($elapsed.TotalSeconds -gt 0) {
-        $downloaded / $elapsed.TotalSeconds
-    } else { 0 }
-    $remaining = if ($speed -gt 0 -and $totalBytes) {
-        ($totalBytes - $downloaded) / $speed
-    } else { 0 }
-
-    Write-Progress -Activity "Downloading file" `
-                   -Status "$percent% | ETA: $([math]::Round($remaining))s" `
-                   -PercentComplete $percent
-}
-
-$file.Close()
-$stream.Close()
-$client.Dispose()
-
-Write-Host "✅ Download complete: $output"
+Write-Host "Download complete: $output"
